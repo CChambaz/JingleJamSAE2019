@@ -65,6 +65,7 @@ public class ClientManager : MonoBehaviour
         
         activeClients.Add(clients[index]);
         clientTotalCount++;
+        CheckStorage();
     }
 
     public void DespawnClient(int index, bool satisifed)

@@ -87,6 +87,7 @@ public class Client : MonoBehaviour
         if (satisfied || waitingTime >= waitingFor)
         {
             clientManager.DespawnClient(index, satisfied);
+            moneyGiven = 0;
             satisfied = false;
             isWaiting = false;
             return;
@@ -114,8 +115,6 @@ public class Client : MonoBehaviour
             if (order[i] > 0)
             {
                 itemsPanel[i].alpha = 1.0f;
-                
-                // TODO: Add stock values instead of the 0
                 itemsPanel[i].GetComponentInChildren<TMP_Text>().text = order[i].ToString();
                 moneyGiven += clientManager.snowballValues[i] * order[i];
             }
@@ -133,7 +132,6 @@ public class Client : MonoBehaviour
 
         GameManager.Instance.MoneyAmount += moneyGiven;
         clientManager.CheckStorage();
-        moneyGiven = 0;
         satisfied = true;
     }
 
