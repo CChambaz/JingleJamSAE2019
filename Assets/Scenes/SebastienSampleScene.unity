@@ -678,13 +678,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 339399779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d988118a4477e4ab9974c56362d9fd, type: 3}
+  m_Script: {fileID: 11500000, guid: d7aecc54abcf758458dfce14b03ccaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnY: 6
   spawnMinX: -2.6
   spawnMaxX: 2.6
-  snowBallPrefab: {fileID: 2799099116876931754, guid: 5b79dc56e977e034dbd7d24952ebd8b9,
+  snowBallPrefab: {fileID: 2799099116876931754, guid: c9d4591d64c2abb4a9168baff2f27c69,
     type: 3}
   spawnTime: 0.5
   currentTime: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1001386337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320540a1bc0761446a83cc82802e3f76, type: 3}
+  m_Script: {fileID: 11500000, guid: 39239dd6dfd14524da4642dd7bf34497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
@@ -1038,7 +1038,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b074782296ebf6a45ad3bc2bc3b4bf81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f0810dcab467fd4abc0e40c2ed202d4, type: 3}
   m_Color: {r: 1, g: 0.5719801, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1187,9 +1187,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633367404}
-  - component: {fileID: 1633367406}
   - component: {fileID: 1633367405}
   - component: {fileID: 1633367407}
+  - component: {fileID: 1633367406}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Untagged
@@ -1247,17 +1247,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1633367403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cfef3170c23069479e53d890c980056, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e678920368140e4b8a6dc251a96acef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementMinX: -2.2
-  movementMaxX: 2.2
+  movementMinX: -2
+  movementMaxX: 2
   collectManager: {fileID: 2133548231}
   downDragDistance: 2
   downDragTime: 0.5
   basketRB: {fileID: 1633367407}
   moveBasketVelocity: 3
-  basketEmptyingPositionY: -5
+  basketEmptyingPositionY: -6
   waitTime: 1
 --- !u!50 &1633367407
 Rigidbody2D:
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2133548229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1387196d1c1f344a1f1c27f2b4957c, type: 3}
+  m_Script: {fileID: 11500000, guid: 35fc28defe419c04da41c3f116fa04f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maximumSnowBasket: 10
