@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
         SQUARE,
         FLAKE
     }
-    
+
     public static GameManager Instance;
-    
+
     private int snowAmount;
     public int SnowAmount
     {
@@ -33,5 +33,25 @@ public class GameManager : MonoBehaviour
     {
         get => moneyAmount;
         set => moneyAmount = value;
+    }
+
+    [SerializeField] private Canvas menu;
+    private bool inPause = false;
+
+    public void BtnPause()
+    {
+        inPause = !inPause;
+        Debug.Log(inPause);
+        if (inPause)
+        {
+            menu.gameObject.SetActive(true);
+            menu.GetComponent<RectTransform>().position = Vector3.zero;
+
+        }
+        else
+        {
+            menu.GetComponent<RectTransform>().position = Vector3.up * 10;
+            menu.gameObject.SetActive(false);
+        }
     }
 }
