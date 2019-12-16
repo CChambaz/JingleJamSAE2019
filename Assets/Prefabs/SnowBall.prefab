@@ -64,11 +64,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2799099116876931754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474d0250a0fa8f946affa40a56f02bba, type: 3}
+  m_Script: {fileID: 11500000, guid: ad7662ed930ec1243a86df66a458e139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   snowBallRB: {fileID: 3140123463434787857}
-  fallingSpeed: 1
+  fallingSpeed: 0
   YDistanceDestroy: -6
 --- !u!58 &8325806177307196556
 CircleCollider2D:
@@ -156,12 +156,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92fd4265055f07a479d663cb8465a08b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2950180435370794d951c956054c7a0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.04, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
