@@ -686,7 +686,7 @@ MonoBehaviour:
   spawnMaxX: 2.6
   snowBallPrefab: {fileID: 2799099116876931754, guid: 5b79dc56e977e034dbd7d24952ebd8b9,
     type: 3}
-  spawnTime: 1
+  spawnTime: 0.5
   currentTime: 0
 --- !u!4 &339399781
 Transform:
@@ -1455,4 +1455,4 @@ MonoBehaviour:
   maximumSnowBasket: 10
   currentSnowBasket: 0
   maximumSnowContainer: 30
-  priceMultiplicator: 0
+  priceMultiplicator: 2
