@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class CollectManager : MonoBehaviour
 {
-    [SerializeField] int maximumSnow = 0;
-    public int MaximumSnow
+    [SerializeField] int maximumSnowBasket = 0;
+    public int MaximumSnowBasket
     {
-        get => maximumSnow;
-        set => maximumSnow = value;
+        get => maximumSnowBasket;
+        set => maximumSnowBasket = value;
     }
 
-    [SerializeField] int currentSnow = 0;
-    public int CurrentSnow
+    [SerializeField] int currentSnowBasket = 0;
+    public int CurrentSnowBasket
     {
-        get => currentSnow;
-        set => currentSnow = value;
+        get => currentSnowBasket;
+        set => currentSnowBasket = value;
+    }
+
+    [SerializeField] int maximumSnowContainer;
+    public int MaximumSnowConainer
+    {
+        get => maximumSnowContainer;
+        set => maximumSnowContainer = value;
+    }
+
+    [SerializeField] int priceMultiplicator;
+    public int PrinceMultiplicator
+    {
+        get => priceMultiplicator;
+        set => priceMultiplicator = value;
     }
 }
