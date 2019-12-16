@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager Instance;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private int snowAmount;
     public int SnowAmount
