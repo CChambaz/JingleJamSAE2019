@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas View_3;
 
     private Canvas canvasSelect;
+    private ClientManager clientManager;
+    public ClientManager ClientManager
+    {
+        get => clientManager;
+        set => clientManager = value;
+    }
 
     [SerializeField] private Text TxtSnowAmount;
     [SerializeField] private Text TxtSnowBallAmount;
@@ -68,7 +74,11 @@ public class GameManager : MonoBehaviour
             TxtSnowBallAmount.text = snowballAmount[0].ToString();
             return snowballAmount;
         }
-        set => snowballAmount = value;
+        set
+        {
+            snowballAmount = value;
+            clientManager.CheckStorage();
+        }
     }
 
     private int moneyAmount;

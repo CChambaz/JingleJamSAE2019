@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8332312753305793861}
   - component: {fileID: 8332312753305793862}
   - component: {fileID: 8332312753305793866}
-  - component: {fileID: 2341777174476200863}
+  - component: {fileID: 4557615359486827037}
   m_Layer: 5
   m_Name: ClientCanvas
   m_TagString: Untagged
@@ -114,16 +114,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientPrefab: {fileID: 6758098512791810825, guid: 6e1825e90f8714344be1adb21ed967fb,
     type: 3}
-  maxClients: 15
+  maxClients: 5
   clientSpawnChance: 100
   clientMinWaitingTime: 10
   clientMaxWaitingTime: 20
-  clientHalfSize: {x: 10, y: 115}
-  clientMaxY: 710
+  clientHalfSize: {x: 10, y: 240}
+  clientMaxY: 500
   clientDisableX: 1085
   clientEnableX: 0
   snowballValues: 01000000020000000300000004000000
---- !u!225 &2341777174476200863
+--- !u!225 &4557615359486827037
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8332312753305793863}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
+  m_Alpha: 0
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

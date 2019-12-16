@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Client : MonoBehaviour
 {
     [SerializeField] private CanvasGroup[] itemsPanel;
+    [SerializeField] private Image[] itemsImage;
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text moneyText;
@@ -47,6 +48,13 @@ public class Client : MonoBehaviour
         set => moneyGiven = value;
     }
 
+    private bool orderCanBeAchieved = false;
+    public bool OrderCanBeAchieved
+    {
+        get => orderCanBeAchieved;
+        set => orderCanBeAchieved = value;
+    }
+    
     private float waitingTime;
 
     private bool satisfied = false;
@@ -59,9 +67,13 @@ public class Client : MonoBehaviour
         clientManager = FindObjectOfType<ClientManager>();
         
         order = new int[GameManager.SNOWBALL_TYPE_COUNT];
-
+        itemsImage = new Image[GameManager.SNOWBALL_TYPE_COUNT];
+        
         for (int i = 0; i < order.Length; i++)
             order[i] = 0;
+
+        for (int i = 0; i < order.Length; i++)
+            itemsImage[i] = itemsPanel[i].GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -81,17 +93,6 @@ public class Client : MonoBehaviour
         }
         
         timerImage.fillAmount = waitingTime / waitingFor;
-
-        for (int i = 0; i < order.Length; i++)
-        {
-            if (order[i] <= 0)
-                continue;
-            
-            /*if(order[i] <= GameManager.Instance.SnowballAmount[i])
-                itemsPanel[i].GetComponent<Image>().color = Color.cyan;
-            else
-                itemsPanel[i].GetComponent<Image>().color = Color.red;*/
-        }
     }
 
     public void StartWaiting()
@@ -127,13 +128,20 @@ public class Client : MonoBehaviour
 
     public void AchieveOrder()
     {
-        for (int i = 0; i < order.Length; i++)
-        {
-            // Check if the stocks have enough to complete the order
-        }
+        if (!orderCanBeAchieved)
+            return;
 
         GameManager.Instance.MoneyAmount += moneyGiven;
+        clientManager.CheckStorage();
         moneyGiven = 0;
         satisfied = true;
+    }
+
+    public void UpdateItemImage(int index, bool canBeSell = true)
+    {
+        if(canBeSell)
+            itemsImage[index].color = Color.cyan;
+        else
+            itemsImage[index].color = Color.red;
     }
 }
