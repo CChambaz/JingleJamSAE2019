@@ -14,10 +14,12 @@ public class ClientManager : MonoBehaviour
     [SerializeField] private float clientMaxY;
     [SerializeField] private float clientDisableX;
     [SerializeField] private float clientEnableX;
+
+    [SerializeField] public int[] snowballValues;
     
     private Client[] clients;
     private List<Client> activeClients = new List<Client>();
-    //private int activeClients;
+    
     private int clientTotalCount;
     private int clientSatisfiedCount;
 

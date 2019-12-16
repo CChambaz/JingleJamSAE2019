@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
-    public const int SNOWBALL_TYPE_COUNT_TMP = 4;
-
     [SerializeField] private CanvasGroup[] itemsPanel;
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text moneyText;
     [SerializeField] private Button validationButton;
     
     private bool isWaiting;
@@ -39,8 +39,13 @@ public class Client : MonoBehaviour
         get => index;
         set => index = value;
     }
-    
-    private float startWaitingAt;
+
+    private int moneyGiven;
+    public int MoneyGiven
+    {
+        get => moneyGiven;
+        set => moneyGiven = value;
+    }
 
     private float waitingTime;
 
@@ -53,7 +58,7 @@ public class Client : MonoBehaviour
     {
         clientManager = FindObjectOfType<ClientManager>();
         
-        order = new int[SNOWBALL_TYPE_COUNT_TMP];
+        order = new int[GameManager.SNOWBALL_TYPE_COUNT];
     }
 
     // Update is called once per frame
@@ -64,8 +69,9 @@ public class Client : MonoBehaviour
 
         if (satisfied || waitingTime >= waitingFor)
         {
-            isWaiting = false;
             clientManager.DespawnClient(index, satisfied);
+            satisfied = false;
+            isWaiting = false;
         }
         
         waitingTime += Time.deltaTime;
@@ -75,7 +81,6 @@ public class Client : MonoBehaviour
     public void StartWaiting()
     {
         isWaiting = true;
-        startWaitingAt = Time.time;
         waitingTime = 0.0f;
         SetRandomOrder();
     }
@@ -89,11 +94,19 @@ public class Client : MonoBehaviour
         
         for (int i = 0; i < order.Length; i++)
         {
-            if(order[i] > 0)
+            if (order[i] > 0)
+            {
                 itemsPanel[i].alpha = 1.0f;
+                
+                // TODO: Add stock values instead of the 0
+                itemsPanel[i].GetComponentInChildren<TMP_Text>().text = order[i].ToString();
+                moneyGiven += clientManager.snowballValues[i] * order[i];
+            }
             else
                 itemsPanel[i].alpha = 0.0f;
         }
+
+        moneyText.text = moneyGiven.ToString();
     }
 
     public void AchieveOrder()
@@ -103,6 +116,8 @@ public class Client : MonoBehaviour
             // Check if the stocks have enough to complete the order
         }
 
+        GameManager.Instance.MoneyAmount += moneyGiven;
+        moneyGiven = 0;
         satisfied = true;
     }
 }
