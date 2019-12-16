@@ -59,6 +59,9 @@ public class Client : MonoBehaviour
         clientManager = FindObjectOfType<ClientManager>();
         
         order = new int[GameManager.SNOWBALL_TYPE_COUNT];
+
+        for (int i = 0; i < order.Length; i++)
+            order[i] = 0;
     }
 
     // Update is called once per frame
@@ -67,15 +70,28 @@ public class Client : MonoBehaviour
         if (!isWaiting)
             return;
 
+        waitingTime += Time.deltaTime;
+
         if (satisfied || waitingTime >= waitingFor)
         {
             clientManager.DespawnClient(index, satisfied);
             satisfied = false;
             isWaiting = false;
+            return;
         }
         
-        waitingTime += Time.deltaTime;
         timerImage.fillAmount = waitingTime / waitingFor;
+
+        for (int i = 0; i < order.Length; i++)
+        {
+            if (order[i] <= 0)
+                continue;
+            
+            /*if(order[i] <= GameManager.Instance.SnowballAmount[i])
+                itemsPanel[i].GetComponent<Image>().color = Color.cyan;
+            else
+                itemsPanel[i].GetComponent<Image>().color = Color.red;*/
+        }
     }
 
     public void StartWaiting()
