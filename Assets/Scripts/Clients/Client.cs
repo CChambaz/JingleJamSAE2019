@@ -62,15 +62,19 @@ public class Client : MonoBehaviour
         if (!isWaiting)
             return;
 
-        if(satisfied || waitingTime >= waitingFor)
+        if (satisfied || waitingTime >= waitingFor)
+        {
+            isWaiting = false;
             clientManager.DespawnClient(index, satisfied);
+        }
         
         waitingTime += Time.deltaTime;
-        timerImage.fillAmount = ((waitingTime + startWaitingAt) * 100) / Time.time;
+        timerImage.fillAmount = waitingTime / waitingFor;
     }
 
     public void StartWaiting()
     {
+        isWaiting = true;
         startWaitingAt = Time.time;
         waitingTime = 0.0f;
         SetRandomOrder();

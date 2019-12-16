@@ -305,9 +305,9 @@ MonoBehaviour:
   clientSpawnChance: 100
   clientMinWaitingTime: 10
   clientMaxWaitingTime: 20
-  clientHalfSize: {x: 0, y: 0}
+  clientHalfSize: {x: 10, y: 115}
   clientMaxY: 780
-  clientDisableX: 1250
+  clientDisableX: 1085
   clientEnableX: 0
 --- !u!224 &2074409632 stripped
 RectTransform:
@@ -468,12 +468,12 @@ PrefabInstance:
     - target: {fileID: 2975767622682698042, guid: e4f4971d741bac849821e3dbe249bef5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2975767622682698042, guid: e4f4971d741bac849821e3dbe249bef5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 766
+      value: 1028
       objectReference: {fileID: 0}
     - target: {fileID: 2975767622682698042, guid: e4f4971d741bac849821e3dbe249bef5,
         type: 3}
