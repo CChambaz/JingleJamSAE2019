@@ -14,6 +14,8 @@ public class MoldSO : ScriptableObject
     public int SnowCost => snowCost;
     [SerializeField] private int maxStock;
     public int MaxStock => maxStock;
+    [SerializeField] private float automationSpeed;
+    public float AutomationSpeed => automationSpeed;
     [SerializeField] private int automationCost;
     public int AutomationCost => automationCost;
     [SerializeField] private int speedUpgradeCost;

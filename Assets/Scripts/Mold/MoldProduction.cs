@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MoldProduction : MonoBehaviour
 {
     private float currentTimer = 0;
+    private float currentAutomationTimer = 0;
     [SerializeField] private Slider timerSlider;
     [SerializeField] private Button buttonProduction;
     [SerializeField] private TextMeshProUGUI buttonText;
@@ -73,6 +74,16 @@ public class MoldProduction : MonoBehaviour
                 buttonText.text = "Out of stack";
             }
         }
+        if (moldManager.CurrentMoldClass.AutomationLevel > 0)
+        {
+            currentAutomationTimer += moldManager.CurrentMoldSO.AutomationSpeed * moldManager.CurrentMoldClass.AutomationLevel * Time.deltaTime;
+            if (currentAutomationTimer > 1)
+            {
+                currentAutomationTimer = 0;
+                GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
+                GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost / 2;
+            }
+        }
     }
 
     public void OnButtonClick()
@@ -91,8 +102,6 @@ public class MoldProduction : MonoBehaviour
             ready = false;
             buttonProduction.interactable = false;
             currentTimer = 0;
-            GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
-            GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
         }
     }
 
