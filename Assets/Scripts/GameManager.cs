@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas View_3;
 
     private Canvas canvasSelect;
+    private ClientManager clientManager;
+    public ClientManager ClientManager
+    {
+        get => clientManager;
+        set => clientManager = value;
+    }
 
     public enum TypeGame
     {
@@ -54,7 +60,11 @@ public class GameManager : MonoBehaviour
     public int[] SnowballAmount
     {
         get => snowballAmount;
-        set => snowballAmount = value;
+        set
+        {
+            snowballAmount = value;
+            clientManager.CheckStorage();
+        }
     }
 
     private int moneyAmount;

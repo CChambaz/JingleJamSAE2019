@@ -26,6 +26,7 @@ public class ClientManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.ClientManager = this;
         clients = new Client[maxClients];
 
         Vector3 nextPos = new Vector3(transform.position.x + clientDisableX, clientMaxY);
@@ -41,6 +42,9 @@ public class ClientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.A))
+            CheckStorage();
+        
         for (int i = 0; i < maxClients; i++)
         {
             if(clients[i].IsWaiting)
@@ -77,5 +81,29 @@ public class ClientManager : MonoBehaviour
         
         if (satisifed)
             clientSatisfiedCount++;
+    }
+    
+    public void CheckStorage()
+    {
+        bool hasEnoughSnowball = true;
+        
+        for (int i = 0; i < activeClients.Count; i++)
+        {
+            for (int j = 0; j < activeClients[i].Order.Length; j++)
+            {
+                if (activeClients[i].Order[j] >= GameManager.Instance.SnowballAmount[j])
+                {
+                    hasEnoughSnowball = false;
+                    activeClients[i].UpdateItemImage(j, false);
+                }
+                else
+                    activeClients[i].UpdateItemImage(j);
+            }
+
+            if (hasEnoughSnowball)
+                activeClients[i].OrderCanBeAchieved = true;
+            
+            hasEnoughSnowball = true;
+        }
     }
 }
