@@ -14,9 +14,12 @@ public class ClientManager : MonoBehaviour
     [SerializeField] private float clientMaxY;
     [SerializeField] private float clientDisableX;
     [SerializeField] private float clientEnableX;
+
+    [SerializeField] public int[] snowballValues;
     
     private Client[] clients;
-    private int activeClients;
+    private List<Client> activeClients = new List<Client>();
+    
     private int clientTotalCount;
     private int clientSatisfiedCount;
 
@@ -31,44 +34,48 @@ public class ClientManager : MonoBehaviour
         {
             clients[i] = Instantiate(clientPrefab, nextPos, Quaternion.identity, transform).GetComponent<Client>();
             clients[i].Index = i;
-            nextPos.y -= i * clientHalfSize.y;
+            nextPos.y -= clientHalfSize.y;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*for (int i = 0; i < maxClients; i++)
+        for (int i = 0; i < maxClients; i++)
         {
             if(clients[i].IsWaiting)
                 continue;
             
             SpawnClient(i);
-        }*/
+        }
     }
 
     void SpawnClient(int index)
     {
-        activeClients++;
-
         // Actually spawn the client
         clients[index].WaitingFor = Random.Range(clientMinWaitingTime, clientMaxWaitingTime);
         clients[index].StartWaiting();
         
         Transform clientTransform = clients[index].GetComponent<Transform>();
-        clientTransform.position = new Vector3(clientEnableX, clientMaxY - (activeClients * clientHalfSize.y));
+        clientTransform.localPosition = new Vector3(clientEnableX, clientMaxY - (activeClients.Count * clientHalfSize.y));
         
+        activeClients.Add(clients[index]);
         clientTotalCount++;
     }
 
     public void DespawnClient(int index, bool satisifed)
     {
-        Transform clientTransform = clients[index].GetComponent<Transform>();
-        clientTransform.position = new Vector3(clientDisableX, clientMaxY - (activeClients * clientHalfSize.y));
+        activeClients.Remove(clients[index]);
 
+        for (int i = 0; i < activeClients.Count; i++)
+        {
+            activeClients[i].transform.localPosition = new Vector3(clientEnableX, clientMaxY - (i * clientHalfSize.y));
+        }
+        
+        Transform clientTransform = clients[index].GetComponent<Transform>();
+        clientTransform.localPosition = new Vector3(clientDisableX, clientMaxY);
+        
         if (satisifed)
             clientSatisfiedCount++;
-
-        activeClients--;
     }
 }

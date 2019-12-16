@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
-    public const int SNOWBALL_TYPE_COUNT_TMP = 4;
-
     [SerializeField] private CanvasGroup[] itemsPanel;
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text moneyText;
     [SerializeField] private Button validationButton;
     
     private bool isWaiting;
@@ -39,8 +39,13 @@ public class Client : MonoBehaviour
         get => index;
         set => index = value;
     }
-    
-    private float startWaitingAt;
+
+    private int moneyGiven;
+    public int MoneyGiven
+    {
+        get => moneyGiven;
+        set => moneyGiven = value;
+    }
 
     private float waitingTime;
 
@@ -53,7 +58,10 @@ public class Client : MonoBehaviour
     {
         clientManager = FindObjectOfType<ClientManager>();
         
-        order = new int[SNOWBALL_TYPE_COUNT_TMP];
+        order = new int[GameManager.SNOWBALL_TYPE_COUNT];
+
+        for (int i = 0; i < order.Length; i++)
+            order[i] = 0;
     }
 
     // Update is called once per frame
@@ -62,16 +70,33 @@ public class Client : MonoBehaviour
         if (!isWaiting)
             return;
 
-        if(satisfied || waitingTime >= waitingFor)
-            clientManager.DespawnClient(index, satisfied);
-        
         waitingTime += Time.deltaTime;
-        timerImage.fillAmount = ((waitingTime + startWaitingAt) * 100) / Time.time;
+
+        if (satisfied || waitingTime >= waitingFor)
+        {
+            clientManager.DespawnClient(index, satisfied);
+            satisfied = false;
+            isWaiting = false;
+            return;
+        }
+        
+        timerImage.fillAmount = waitingTime / waitingFor;
+
+        for (int i = 0; i < order.Length; i++)
+        {
+            if (order[i] <= 0)
+                continue;
+            
+            /*if(order[i] <= GameManager.Instance.SnowballAmount[i])
+                itemsPanel[i].GetComponent<Image>().color = Color.cyan;
+            else
+                itemsPanel[i].GetComponent<Image>().color = Color.red;*/
+        }
     }
 
     public void StartWaiting()
     {
-        startWaitingAt = Time.time;
+        isWaiting = true;
         waitingTime = 0.0f;
         SetRandomOrder();
     }
@@ -85,11 +110,19 @@ public class Client : MonoBehaviour
         
         for (int i = 0; i < order.Length; i++)
         {
-            if(order[i] > 0)
+            if (order[i] > 0)
+            {
                 itemsPanel[i].alpha = 1.0f;
+                
+                // TODO: Add stock values instead of the 0
+                itemsPanel[i].GetComponentInChildren<TMP_Text>().text = order[i].ToString();
+                moneyGiven += clientManager.snowballValues[i] * order[i];
+            }
             else
                 itemsPanel[i].alpha = 0.0f;
         }
+
+        moneyText.text = moneyGiven.ToString();
     }
 
     public void AchieveOrder()
@@ -99,6 +132,8 @@ public class Client : MonoBehaviour
             // Check if the stocks have enough to complete the order
         }
 
+        GameManager.Instance.MoneyAmount += moneyGiven;
+        moneyGiven = 0;
         satisfied = true;
     }
 }
