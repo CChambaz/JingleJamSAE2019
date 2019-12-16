@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Canvas View_1;
+    [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
     [SerializeField] private Canvas View_3;
 
@@ -33,16 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-
-        canvasSelect = View_1;
-
         SetTypeGame((int)type);
-    }
-
-    void ChangeCanavasSelect()
-    {
-
-
     }
 
     public static GameManager Instance;
@@ -109,7 +100,6 @@ public class GameManager : MonoBehaviour
         {
             menu.gameObject.SetActive(true);
             menu.GetComponent<RectTransform>().position = Vector3.zero;
-
         }
         else
         {
