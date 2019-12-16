@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8332312753305793861}
   - component: {fileID: 8332312753305793862}
   - component: {fileID: 8332312753305793866}
+  - component: {fileID: 2341777174476200863}
   m_Layer: 5
   m_Name: ClientCanvas
   m_TagString: Untagged
@@ -122,3 +123,15 @@ MonoBehaviour:
   clientDisableX: 1085
   clientEnableX: 0
   snowballValues: 01000000020000000300000004000000
+--- !u!225 &2341777174476200863
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332312753305793863}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
