@@ -5,27 +5,22 @@ using UnityEngine;
 public class MoldSO : ScriptableObject
 {
     [SerializeField] private float maxTimer;
-    public float MaxTimer
-    {
-        get => maxTimer;
-        set => maxTimer = value;
-    }
+    public float MaxTimer => maxTimer;
     [SerializeField] private float timerSpeed;
-    public float TimerSpeed
-    {
-        get => timerSpeed;
-        set => timerSpeed = value;
-    }
+    public float TimerSpeed => timerSpeed;
     [SerializeField] private int ballRate;
-    public int BallRate
-    {
-        get => ballRate;
-        set => ballRate = value;
-    }
+    public int BallRate => ballRate;
     [SerializeField] private int snowCost;
-    public int SnowCost
-    {
-        get => snowCost;
-        set => snowCost = value;
-    }
+    public int SnowCost => snowCost;
+    [SerializeField] private int maxStock;
+    public int MaxStock => maxStock;
+    [SerializeField] private int automationCost;
+    public int AutomationCost => automationCost;
+    [SerializeField] private int speedUpgradeCost;
+    public int SpeedUpgradeCost => speedUpgradeCost;
+    [SerializeField] private int stockUpgradeCost;
+    public int StockUpgradeCost => stockUpgradeCost;
+    [SerializeField] private int unlockedCost;
+    public int UnlockedCost => unlockedCost;
+
 }

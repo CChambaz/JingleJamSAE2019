@@ -16,3 +16,8 @@ MonoBehaviour:
   timerSpeed: 1
   ballRate: 3
   snowCost: 3
+  maxStock: 10
+  automationCost: 3
+  speedUpgradeCost: 3
+  stockUpgradeCost: 3
+  unlockedCost: 3
