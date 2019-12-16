@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc45b9a66c494f54683d610e6b087947, type: 3}
+  m_Script: {fileID: 11500000, guid: d3854455e35e3ed4a82f3e5637623b39, type: 3}
   m_Name: FlakeMold
   m_EditorClassIdentifier: 
   maxTimer: 4
-  timerSpeed: 1
+  timerSpeed: 4
   ballRate: 4
   snowCost: 4
   maxStock: 10

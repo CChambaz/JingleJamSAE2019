@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 788375028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a330488be86f10348bf574a8ecd228e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3429c1904bd8e04419c9d62ed80552ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 401704573}
@@ -2198,14 +2198,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545934542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3af4ff85fbbaf45aab0735ce864564, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a1af7d58e86fcf418c5f3c353ffa39e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moldsSO:
-  - {fileID: 11400000, guid: 0c20aaa875b9f6243a99ab7fc18872ca, type: 2}
-  - {fileID: 11400000, guid: 69115b5050ea2e241b9e1c5b9de7eb3c, type: 2}
-  - {fileID: 11400000, guid: 7a45af8645ef9c042bd8dad1c6ccc103, type: 2}
-  - {fileID: 11400000, guid: 8aeb17fe94c6a2d4eba2c72b0ff83df3, type: 2}
+  - {fileID: 11400000, guid: c241c608561e45d469f68d9083c8ed7c, type: 2}
+  - {fileID: 11400000, guid: 2521f1cfaad90a34995861eb5f60ff0a, type: 2}
+  - {fileID: 11400000, guid: 6cad0484f0552f9408d63d708cdbc005, type: 2}
+  - {fileID: 11400000, guid: c811f07c41cb6f94f8f19de04c5bdd72, type: 2}
 --- !u!1 &1569450998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2535,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683946119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a2cc940c14231468042807ed9924fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 39239dd6dfd14524da4642dd7bf34497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
@@ -3109,7 +3109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2051259028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7bbaa75d78e7449930ccae9bfc36da, type: 3}
+  m_Script: {fileID: 11500000, guid: 626d062625ad7a447aa7f08f77c01354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moldSprites:

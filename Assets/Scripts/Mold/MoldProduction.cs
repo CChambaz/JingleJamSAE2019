@@ -20,6 +20,24 @@ public class MoldProduction : MonoBehaviour
         moldManager = FindObjectOfType<MoldManager>();
         timerSlider.maxValue = moldManager.CurrentMoldSO.MaxTimer;
         timerSlider.minValue = 0;
+        if (GameManager.Instance.SnowAmount >= moldManager.CurrentMoldSO.SnowCost && moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] <= moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
+        {
+            ready = false;
+            buttonProduction.interactable = false;
+            currentTimer = 0;
+            GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
+            GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
+        }
+        else 
+        {
+            GameManager.Instance.MoneyAmount -= moldManager.CurrentMoldSO.UnlockedCost;
+            moldManager.CurrentMoldClass.unlocked = true;
+            ready = false;
+            buttonProduction.interactable = false;
+            currentTimer = 0;
+            GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
+            GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
+        }
     }
 
     // Update is called once per frame
