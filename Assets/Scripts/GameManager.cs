@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         set => snowAmount = value;
     }
 
-    private int[] snowballAmount;
+    private int[] snowballAmount = new int[SNOWBALL_TYPE_COUNT];
     public int[] SnowballAmount
     {
         get => snowballAmount;
