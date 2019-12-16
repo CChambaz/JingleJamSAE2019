@@ -3,13 +3,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class MoldClass
+{
+
+    public bool unlocked = false;
+    public bool Unlocked
+    {
+        get => unlocked;
+        set => unlocked = value;
+    }
+
+    private int stockLevel = 1;
+    public int StockLevel
+    {
+        get => stockLevel;
+        set
+        {
+            stockLevel = value;
+        }
+    }
+
+    private int speedLevel = 1;
+    public int SpeedLevel
+    {
+        get => speedLevel;
+        set
+        {
+            speedLevel = value;
+        }
+    }
+
+    private int automationLevel = 1;
+    public int AutomationLevel
+    {
+        get => automationLevel;
+        set
+        {
+            automationLevel = value;
+        }
+    }
+}
+
 public class MoldManager : MonoBehaviour
 {
-    [SerializeField] private MoldSO[] molds;
-    public MoldSO[] Molds => molds;
+    [SerializeField] private MoldSO[] moldsSO;
+    public MoldSO[] MoldsSO => moldsSO;
 
-    private MoldSO currentMold;
-    public MoldSO CurrentMold => currentMold;
+    private MoldClass[] moldClasses = new MoldClass[4];
+    public MoldClass[] MoldClasses
+    {
+        get => moldClasses;
+        set => moldClasses = value;
+    }
+
+    private MoldSO currentMoldSO;
+    public MoldSO CurrentMoldSO => currentMoldSO;
+
+    private MoldClass currentMoldClass;
+    public MoldClass CurrentMoldClass
+    {
+        get => currentMoldClass;
+        set => currentMoldClass = value;
+    }
 
     private MoldProduction moldProduction;
 
@@ -27,23 +82,24 @@ public class MoldManager : MonoBehaviour
             {
                 selectedMold = snowballTypeCount - 1;
             }
-            currentMold = molds[selectedMold];
+            currentMoldSO = moldsSO[selectedMold];
+            currentMoldClass = moldClasses[selectedMold];
             moldProduction.OnMoldChange();
         }
     }
 
     void Awake()
     {
-        currentMold = molds[selectedMold];
+        for (int i = 0; i < moldClasses.Length; i++)
+        {
+            moldClasses[i] = new MoldClass();
+        }
+        currentMoldSO = moldsSO[selectedMold];
+        currentMoldClass = moldClasses[selectedMold];
     }
 
     void Start()
     {
         moldProduction = FindObjectOfType<MoldProduction>();
-    }
-
-    public void UpdradeSpeed(float newSpeed)
-    {
-        molds[selectedMold].TimerSpeed += newSpeed;
     }
 }
