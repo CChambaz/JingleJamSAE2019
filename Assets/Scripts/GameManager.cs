@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public const int SNOWBALL_TYPE_COUNT = 4;
+
     enum SnowballType
     {
         ROUND,
