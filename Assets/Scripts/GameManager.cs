@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviour
     private Canvas menu;
 
     private Charge charge;
+    public Charge Charge
+    {
+        get => charge;
+        set => charge = value;
+    }
+
     private ClientManager clientManager;
     public ClientManager ClientManager
     {

@@ -45,6 +45,7 @@ public class TimeManager : MonoBehaviour
 
     private Weather[] weathers = new Weather[7]; 
     [SerializeField] private List<WeatherTypeSO> weatherTypes;
+    private int weekCount = 0;
 
     void Start()
     {
@@ -132,9 +133,8 @@ public class TimeManager : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance.InPause)
-        {
             return;
-        }
+        
         if (!currentTimeWasSet)
         {
             currentTime = Time.time;
@@ -151,6 +151,15 @@ public class TimeManager : MonoBehaviour
             }
             if (weekDay >= 7)
             {
+                GameManager.Instance.Charge.ApplyMaintenanceCost();
+                weekCount += 1;
+
+                if (weekCount >= 4)
+                {
+                    GameManager.Instance.Charge.ApplyTaxes();
+                    weekCount = 0;
+                }
+                
                 weekDay = 0;
                 switch (season)
                 {
