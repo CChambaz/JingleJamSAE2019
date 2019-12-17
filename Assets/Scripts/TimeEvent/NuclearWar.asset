@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: NuclearWar
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 0
-  percentage: 0
-  seasons: 00000000
-  weekDays: 00000000000000
+  duration: 5
+  percentage: 0.1
+  seasons: 01010101
+  weekDays: 01010101010101
   index: Big
+  moldAccelerations: 0.1
+  promotions: 1.5

@@ -24,35 +24,35 @@ public class MoldUpgrade : MonoBehaviour
     {
         if (moldManager.CurrentMoldClass.Unlocked)
         {
-            automationUpgradeButton.interactable = moldManager.CurrentMoldSO.AutomationCost * moldManager.CurrentMoldClass.AutomationLevel+1 <= GameManager.Instance.MoneyAmount;
-            speedUpgradeButton.interactable = moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel <= GameManager.Instance.MoneyAmount;
-            stockUpgradeButton.interactable = moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel <= GameManager.Instance.MoneyAmount;
+            automationUpgradeButton.interactable = moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier <= GameManager.Instance.MoneyAmount;
+            speedUpgradeButton.interactable = moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier <= GameManager.Instance.MoneyAmount;
+            stockUpgradeButton.interactable = moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier <= GameManager.Instance.MoneyAmount;
         } else
         {
             automationUpgradeButton.interactable = false;
             speedUpgradeButton.interactable = false;
             stockUpgradeButton.interactable = false;
         }
-        automationUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.AutomationLevel + "\n Price : " + (moldManager.CurrentMoldSO.AutomationCost * moldManager.CurrentMoldClass.AutomationLevel+1).ToString();
-        speedUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.SpeedLevel + "\n Price : " + (moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel).ToString();
-        stockUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.StockLevel + "\n Price : " + (moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel).ToString();
+        automationUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.AutomationLevel + "\n Price : " + (moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
+        speedUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.SpeedLevel + "\n Price : " + (moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
+        stockUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.StockLevel + "\n Price : " + (moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
     }
 
     public void UpgradeAutomation()
     {
-        GameManager.Instance.MoneyAmount -= moldManager.CurrentMoldSO.AutomationCost * moldManager.CurrentMoldClass.AutomationLevel+1;
+        GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.AutomationLevel++;
     }
 
     public void UpdradeSpeed()
     {
-        GameManager.Instance.MoneyAmount -= moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel;
+        GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.SpeedLevel++;
     }
 
     public void UpgradeStock()
     {
-        GameManager.Instance.MoneyAmount -= moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel;
+        GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.StockLevel++;
     }
 

@@ -22,10 +22,10 @@ public class SnowBallSpawner : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
-        if (currentTime + currentRandom >= spawnTime)
+        if (currentTime + currentRandom >= spawnTime * GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier)
         {
             Instantiate(snowBallPrefab, new Vector3(Random.Range(spawnMinX, spawnMaxX), spawnY, 0), Quaternion.identity, gameObject.transform);
-            currentRandom = Random.Range(-randomSpawnFloatTime, randomSpawnFloatTime);
+            currentRandom = Random.Range(-randomSpawnFloatTime * GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier, randomSpawnFloatTime * GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier);
             currentTime = 0;
         }
     }

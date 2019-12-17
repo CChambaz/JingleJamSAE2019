@@ -66,7 +66,7 @@ public class TimeManager : MonoBehaviour
                 if (currenTimeEvent != null)
                 {
                     currenTimeEvent.EndEvent();
-                    if (currenTimeEvent.Index == "BigEvent")
+                    if (currenTimeEvent.Index == "Big")
                     {
                         events.Remove(currenTimeEvent);
                     }

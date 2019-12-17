@@ -4,13 +4,17 @@ using UnityEngine;
 [CreateAssetMenu]
 public class StrikeEvent : TimeEvent
 {
+    [SerializeField] private float moldAccelerations;
+    [SerializeField] private float promotions;
     public override void StartEvent()
     {
-        throw new System.NotImplementedException();
+        GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier = moldAccelerations;
+        GameManager.Instance.StatsManagerInstance.SalesMultiplier = promotions;
     }
 
     public override void EndEvent()
     {
-        throw new System.NotImplementedException();
+        GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier = 1;
+        GameManager.Instance.StatsManagerInstance.SalesMultiplier = 1;
     }
 }
