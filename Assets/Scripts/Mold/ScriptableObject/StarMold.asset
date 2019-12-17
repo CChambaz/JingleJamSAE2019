@@ -17,7 +17,7 @@ MonoBehaviour:
   ballRate: 2
   snowCost: 2
   maxStock: 10
-  automationSpeed: 0.1
+  automationSpeed: 0.3
   automationCost: 2
   speedUpgradeCost: 2
   stockUpgradeCost: 2

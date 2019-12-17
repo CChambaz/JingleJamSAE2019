@@ -8,26 +8,31 @@ using UnityEngine.UI;
 public class MoldProduction : MonoBehaviour
 {
     private float currentTimer = 0;
-    private float currentAutomationTimer = 0;
+    private float[] currentAutomationTimer = new float[4];
     [SerializeField] private Slider timerSlider;
+    [SerializeField] private Image[] automationTimer;
     [SerializeField] private Button buttonProduction;
     [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private GameObject[] snowBallPrefab;
     private MoldManager moldManager;
 
     private bool ready = false;
+
     // Start is called before the first frame update
     void Start()
     {
         moldManager = FindObjectOfType<MoldManager>();
         timerSlider.maxValue = moldManager.CurrentMoldSO.MaxTimer;
         timerSlider.minValue = 0;
+        foreach (Image image in automationTimer)
+        {
+            image.fillAmount = 0;
+        }
         if (GameManager.Instance.SnowAmount >= moldManager.CurrentMoldSO.SnowCost && moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] <= moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
         {
             ready = false;
             buttonProduction.interactable = false;
             currentTimer = 0;
-            GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
-            GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
         }
         else 
         {
@@ -36,8 +41,6 @@ public class MoldProduction : MonoBehaviour
             ready = false;
             buttonProduction.interactable = false;
             currentTimer = 0;
-            GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
-            GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
         }
     }
 
@@ -60,28 +63,44 @@ public class MoldProduction : MonoBehaviour
                     currentTimer += moldManager.CurrentMoldSO.TimerSpeed * Time.deltaTime * moldManager.CurrentMoldClass.SpeedLevel;
                 }
             }
-        } else
+        }
+        else
         {
             if (!moldManager.CurrentMoldClass.Unlocked)
             {
                 buttonText.text = "Unlock for " + moldManager.CurrentMoldSO.UnlockedCost;
                 buttonProduction.interactable = GameManager.Instance.MoneyAmount >= moldManager.CurrentMoldSO.UnlockedCost;
-            } else if (GameManager.Instance.SnowAmount < moldManager.CurrentMoldSO.SnowCost)
+                currentTimer = 0;
+            }
+            else if (GameManager.Instance.SnowAmount < moldManager.CurrentMoldSO.SnowCost)
             {
                 buttonText.text = "Not Enough Snow";
-            } else if (GameManager.Instance.SnowballAmount[moldManager.SelectedMold] > moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
+                buttonProduction.interactable = false;
+                currentTimer = 0;
+            }
+            else if (GameManager.Instance.SnowballAmount[moldManager.SelectedMold] > moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
             {
                 buttonText.text = "Out of stack";
+                buttonProduction.interactable = false;
+                currentTimer = 0;
             }
         }
-        if (moldManager.CurrentMoldClass.AutomationLevel > 0)
+        for (int i = 0; i < 4; i++)
         {
-            currentAutomationTimer += moldManager.CurrentMoldSO.AutomationSpeed * moldManager.CurrentMoldClass.AutomationLevel * Time.deltaTime;
-            if (currentAutomationTimer > 1)
+            if (moldManager.MoldClasses[i].AutomationLevel > 0 && GameManager.Instance.SnowAmount >= moldManager.MoldsSO[i].SnowCost && moldManager.MoldClasses[i].Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] <= moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel)
             {
-                currentAutomationTimer = 0;
-                GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
-                GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost / 2;
+                currentAutomationTimer[i] += moldManager.MoldsSO[i].AutomationSpeed * moldManager.MoldClasses[i].AutomationLevel * Time.deltaTime;
+                automationTimer[i].fillAmount = currentAutomationTimer[i];
+                if (currentAutomationTimer[i] > 1)
+                {
+                    currentAutomationTimer[i] = 0;
+                    GameManager.Instance.SnowballAmount[i] += moldManager.MoldsSO[i].BallRate;
+                    GameManager.Instance.SnowAmount -= moldManager.MoldsSO[i].SnowCost;
+                    GameObject.Instantiate(snowBallPrefab[i], Camera.main.ScreenToWorldPoint(automationTimer[i].transform.position) + Vector3.forward * 10, Quaternion.identity);
+                }
+            } else
+            {
+                automationTimer[i].fillAmount = 0;
             }
         }
     }
@@ -95,6 +114,7 @@ public class MoldProduction : MonoBehaviour
             currentTimer = 0;
             GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
             GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
+            GameObject.Instantiate(snowBallPrefab[moldManager.SelectedMold], Vector3.zero, Quaternion.identity);
         } else if (!moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.MoneyAmount >= moldManager.CurrentMoldSO.UnlockedCost)
         {
             GameManager.Instance.MoneyAmount -= moldManager.CurrentMoldSO.UnlockedCost;
