@@ -5,7 +5,19 @@ using UnityEngine;
 public class Slaves : MonoBehaviour
 {
     [SerializeField] int slavePrice = 500;
+    public int SlavePrice
+    {
+        get => slavePrice;
+        set => slavePrice = value;
+    }
+
     [SerializeField] int amountSlaves = 0;
+    public int AmountSlaves
+    {
+        get => amountSlaves;
+        set => amountSlaves = value;
+    }
+
     [SerializeField] float farmTime = 5;
     [SerializeField] int amountSnowBySlaves = 1;
 
