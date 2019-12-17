@@ -22,6 +22,10 @@ public class CollectButtons : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         IncreaseBasketTMP.text = "Capacity: " + collectManager.MaximumSnowBasket + "\n" + "Cost: " + (basketCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         IncreaseContainerTMP.text = "Capacity: " + collectManager.MaximumSnowConainer + "\n" + "Cost: " + (containerCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         IncreaseSlavesTMP.text = "Slaves: " + slavesManager.AmountSlaves + "\n" + "Cost: " + (slavesManager.SlavePrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);

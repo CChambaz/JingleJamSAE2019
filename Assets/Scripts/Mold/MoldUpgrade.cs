@@ -23,6 +23,10 @@ public class MoldUpgrade : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (moldManager.CurrentMoldClass.Unlocked)
         {
             automationUpgradeButton.interactable = moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier <= GameManager.Instance.MoneyAmount;

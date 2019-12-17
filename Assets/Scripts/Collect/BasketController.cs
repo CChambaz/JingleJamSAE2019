@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BasketController : MonoBehaviour
@@ -25,6 +26,7 @@ public class BasketController : MonoBehaviour
     [SerializeField] float waitTime;
     [SerializeField] TMP_Text amountBasketTMP;
     [SerializeField] Transform basketSpriteTransform;
+    [SerializeField] Image basketContentPercentageImage;
 
     enum BasketEmptyingStatus
     {
@@ -38,9 +40,14 @@ public class BasketController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         //amountBasketTMP
-        amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
+        //amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
         amountBasketTMP.text = collectManager.CurrentSnowBasket.ToString();
+        basketContentPercentageImage.fillAmount = (float)collectManager.CurrentSnowBasket / (float)collectManager.MaximumSnowBasket;
         if (canMoveBasket)
         {
             if (Input.GetMouseButtonDown(0))                //Not sure it works on mobile
@@ -54,7 +61,6 @@ public class BasketController : MonoBehaviour
                 {
                     if (downDragDistance < currentDragYPosition - Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
                     {
-                        Debug.Log("Test");
                         canMoveBasket = false;
                         basketPositionYBackup = transform.position.y;
                         basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
@@ -145,7 +151,6 @@ public class BasketController : MonoBehaviour
             {
                 GameManager.Instance.SnowAmount = collectManager.MaximumSnowConainer;
             }
-            Debug.Log(GameManager.Instance.SnowAmount);
             collectManager.CurrentSnowBasket = 0;
             basketEmptyingStatus = BasketEmptyingStatus.GO_UP;
             hasStartedWaitTimer = false;

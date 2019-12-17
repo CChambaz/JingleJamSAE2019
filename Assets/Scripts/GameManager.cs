@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
     [SerializeField] private Canvas View_3;
+    [SerializeField] private Canvas View_4;
     [Header("SnowAmount")]
     [SerializeField] private Text TxtSnowAmount;
     [Header("SnowBallAmount")]
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         IN_GAME_1,
         IN_GAME_2,
         IN_GAME_3,
+        IN_GAME_4,
         IN_PAUSE
     }
 
@@ -131,6 +133,9 @@ public class GameManager : MonoBehaviour
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_4.GetComponent<CanvasGroup>().interactable = false;
+                View_4.GetComponent<CanvasGroup>().alpha = 0;
+                View_4.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 break;
 
             case (int)GameState.IN_GAME_2:
@@ -142,6 +147,9 @@ public class GameManager : MonoBehaviour
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_4.GetComponent<CanvasGroup>().interactable = false;
+                View_4.GetComponent<CanvasGroup>().alpha = 0;
+                View_4.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 break;
 
             case (int)GameState.IN_GAME_3:
@@ -153,6 +161,22 @@ public class GameManager : MonoBehaviour
                 View_3.GetComponent<CanvasGroup>().interactable = true;
                 View_3.GetComponent<CanvasGroup>().alpha = 1;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                View_4.GetComponent<CanvasGroup>().interactable = false;
+                View_4.GetComponent<CanvasGroup>().alpha = 0;
+                View_4.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                break;
+            case (int)GameState.IN_GAME_4:
+                this.type = GameState.IN_GAME_4;
+                View_1.gameObject.SetActive(false);
+                View_2.GetComponent<CanvasGroup>().interactable = false;
+                View_2.GetComponent<CanvasGroup>().alpha = 0;
+                View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_3.GetComponent<CanvasGroup>().interactable = false;
+                View_3.GetComponent<CanvasGroup>().alpha = 0;
+                View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_4.GetComponent<CanvasGroup>().interactable = true;
+                View_4.GetComponent<CanvasGroup>().alpha = 1;
+                View_4.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 break;
         }
     }

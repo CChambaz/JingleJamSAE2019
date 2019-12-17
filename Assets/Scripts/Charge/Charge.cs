@@ -36,11 +36,11 @@ public class Charge : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         maintainText.text = (installationMaintenance * automationCount).ToString();
         taxeText.text = (taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount).ToString();
-    }
+    }*/
 
     public void ApplyMaintenanceCost()
     {
