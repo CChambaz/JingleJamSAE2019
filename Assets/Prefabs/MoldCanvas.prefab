@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.08719444, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.08719444, a: 1}
+  m_Color: {r: 1, g: 0.08282891, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.08719444, a: 1}
+  m_Color: {r: 0, g: 0.11850667, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 9134795844577778298}
   - component: {fileID: 9134795844577778277}
   - component: {fileID: 9134795844577778297}
+  - component: {fileID: 7545121831684485792}
   m_Layer: 5
   m_Name: MoldCanvas
   m_TagString: Untagged
@@ -1468,6 +1469,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2521f1cfaad90a34995861eb5f60ff0a, type: 2}
   - {fileID: 11400000, guid: 6cad0484f0552f9408d63d708cdbc005, type: 2}
   - {fileID: 11400000, guid: c811f07c41cb6f94f8f19de04c5bdd72, type: 2}
+--- !u!225 &7545121831684485792
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134795844577778276}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9134795844756535983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2099,11 @@ MonoBehaviour:
   - {fileID: 1548184958}
   buttonProduction: {fileID: 9134795845959818755}
   buttonText: {fileID: 9134795844519695189}
+  snowBallPrefab:
+  - {fileID: 4256323507864191452, guid: c127567200d5f2f409ad79d313e7b3d7, type: 3}
+  - {fileID: 3814168697316964512, guid: 74baf1561fdc44a4a8fdc9db8d46f613, type: 3}
+  - {fileID: 5149376864832545058, guid: cd8d676ecd720fe478874d1027fad296, type: 3}
+  - {fileID: 7633357206836696786, guid: 7e28843e443ff95479d40f3e6b95fd5d, type: 3}
 --- !u!1 &9134795845492276329
 GameObject:
   m_ObjectHideFlags: 0

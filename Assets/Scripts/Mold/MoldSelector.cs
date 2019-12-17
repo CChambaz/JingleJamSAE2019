@@ -69,7 +69,6 @@ public class MoldSelector : MonoBehaviour {
     {
         while (Mathf.Abs(moldSprites[moldIndex].transform.position.x - dest.x) > 10 && currentMoving.Contains(moldIndex))
         {
-            Debug.Log(Mathf.Abs(moldSprites[moldIndex].transform.position.x - dest.x) + " " + moldSprites[moldIndex].transform.position.x + " " + moldIndex);
             moldSprites[moldIndex].transform.position += Vector3.left * arrowIndex * animationSpeed;
             yield return null;
         }
