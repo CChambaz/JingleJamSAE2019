@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BlackFriday
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 0
-  percentage: 0
-  seasons: 00000000
-  weekDays: 00000000000000
+  duration: 3
+  percentage: 0.7
+  seasons: 01010101
+  weekDays: 00000000010101
   index: Sales
-  promotions: -0.9
+  promotions: 0.1

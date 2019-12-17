@@ -4841,6 +4841,144 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1667305875}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1707446696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6690979360809506850, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_Name
+      value: TimeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506851, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: dayHours
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: weekDay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b4fa50847d62b9d468e239c95561ec02,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36bb982a3a0a25945a8087132e876c74,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: cca5a1a8ddf002946b5c90af71011c31,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86806bae7f8e91e488d6727be31221e0,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b1dc2b2ebab4ca48a296a40dd136cfc,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 64c8ea0052945b549ab076465402b365,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 31b3aea85db6f4d4b8250c00a6d13b8d,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: f6702f47f4178b34d9ef1ecb7eac26e3,
+        type: 2}
+    - target: {fileID: 6690979360809506852, guid: f5ac9451d949cfe4f885e73be43047bf,
+        type: 3}
+      propertyPath: events.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5417c94a8e2ec2b4d99fdf0191a50117,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5ac9451d949cfe4f885e73be43047bf, type: 3}
 --- !u!1 &1776924929
 GameObject:
   m_ObjectHideFlags: 0
@@ -5294,6 +5432,11 @@ PrefabInstance:
     - target: {fileID: 7545121831684485792, guid: 8abbf1977f1d77e46be2b2fee33c460e,
         type: 3}
       propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545121831684485792, guid: 8abbf1977f1d77e46be2b2fee33c460e,
+        type: 3}
+      propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9134795844009711312, guid: 8abbf1977f1d77e46be2b2fee33c460e,

@@ -90,12 +90,13 @@ public class MoldProduction : MonoBehaviour
         {
             if (moldManager.MoldClasses[i].AutomationLevel > 0 && GameManager.Instance.SnowAmount >= moldManager.MoldsSO[i].SnowCost && moldManager.MoldClasses[i].Unlocked && GameManager.Instance.SnowballAmount[i] <= moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel)
             {
-                currentAutomationTimer[i] += moldManager.MoldsSO[i].AutomationSpeed * moldManager.MoldClasses[i].AutomationLevel * Time.deltaTime;
+                currentAutomationTimer[i] += moldManager.MoldsSO[i].AutomationSpeed * moldManager.MoldClasses[i].AutomationLevel * Time.deltaTime * GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier;
                 automationTimer[i].fillAmount = currentAutomationTimer[i];
                 if (currentAutomationTimer[i] > 1)
                 {
                     currentAutomationTimer[i] = 0;
                     GameManager.Instance.SnowballAmount[i] += moldManager.MoldsSO[i].BallRate;
+                    GameManager.Instance.ClientManager.CheckStorage();
                     if (GameManager.Instance.SnowballAmount[i] > moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel)
                     {
                         GameManager.Instance.SnowballAmount[i] = moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel;
@@ -122,6 +123,7 @@ public class MoldProduction : MonoBehaviour
             buttonProduction.interactable = false;
             currentTimer = 0;
             GameManager.Instance.SnowballAmount[moldManager.SelectedMold] += moldManager.CurrentMoldSO.BallRate;
+            GameManager.Instance.ClientManager.CheckStorage();
             if (GameManager.Instance.SnowballAmount[moldManager.SelectedMold] > moldManager.MoldsSO[moldManager.SelectedMold].MaxStock * moldManager.MoldClasses[moldManager.SelectedMold].StockLevel)
             {
                 GameManager.Instance.SnowballAmount[moldManager.SelectedMold] = moldManager.MoldsSO[moldManager.SelectedMold].MaxStock * moldManager.MoldClasses[moldManager.SelectedMold].StockLevel;
