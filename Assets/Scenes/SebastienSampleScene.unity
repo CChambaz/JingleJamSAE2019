@@ -3809,6 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39239dd6dfd14524da4642dd7bf34497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu: {fileID: 1076058369}
   View_1: {fileID: 136689532}
   View_2: {fileID: 1739119265}
   View_3: {fileID: 1418841653}
@@ -3818,7 +3819,6 @@ MonoBehaviour:
   TxtSnowBallAmountBlue: {fileID: 937644624}
   TxtSnowBallAmountRed: {fileID: 590953067}
   TxtMoneyAmount: {fileID: 311979827}
-  menu: {fileID: 1076058369}
 --- !u!4 &1400470120
 Transform:
   m_ObjectHideFlags: 0
