@@ -612,7 +612,7 @@ MonoBehaviour:
   - {fileID: 9134795845731548676}
   minDragTime: 0.01
   minDragDistance: 0.2
-  animationSpeed: 25
+  animationSpeed: 1500
 --- !u!114 &825266013
 MonoBehaviour:
   m_ObjectHideFlags: 0

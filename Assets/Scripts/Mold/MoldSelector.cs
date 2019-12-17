@@ -17,12 +17,16 @@ public class MoldSelector : MonoBehaviour {
     [SerializeField] float minDragDistance;
 
     [SerializeField] float animationSpeed;
-    private int[] currentMoving = new int[2];
+    private int[] currentMoving = new int[]{-1,-1};
+    private float[] currentDestination = new float[2];
+    private int[] currentOrientation = new int[2];
     // Start is called before the first frame update
     void Start()
     {
         centerPosition = moldSprites[0].transform.position;
         moldManager = FindObjectOfType<MoldManager>();
+        currentMoving[0] = 0;
+        currentDestination[0] = centerPosition.x;
     }
 
     void Update()
@@ -48,30 +52,50 @@ public class MoldSelector : MonoBehaviour {
                 }
             }
         }
+        AnimationMove();
     }
     public void MoveSelector(int arrowIndex) {
-        for (int i = 0; i < 4; i++)
-        {
-            moldSprites[i].transform.position = centerPosition + Vector2.left * 550 * arrowIndex;
-        }
         //moldSprites[moldManager.SelectedMold].SetActive(false);
         currentMoving[0] = moldManager.SelectedMold;
+        currentDestination[0] = centerPosition.x + 550 * arrowIndex;
+        currentOrientation[0] = arrowIndex;
         moldSprites[moldManager.SelectedMold].transform.position = centerPosition;
-        StartCoroutine(AnimationMove(arrowIndex, centerPosition + Vector2.left * 550 * arrowIndex, moldManager.SelectedMold));
         moldManager.SelectedMold += arrowIndex;
         //moldSprites[(int)moldManager.SelectedMold].SetActive(true);
         currentMoving[1] = moldManager.SelectedMold;
-        moldSprites[moldManager.SelectedMold].transform.position = centerPosition + Vector2.right * 550 * arrowIndex;
-        StartCoroutine(AnimationMove(arrowIndex, centerPosition, moldManager.SelectedMold));
+        currentDestination[1] = centerPosition.x;
+        currentOrientation[1] = arrowIndex;
+        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 550 * arrowIndex;
     }
-    
-    IEnumerator AnimationMove(int arrowIndex, Vector2 dest, int moldIndex)
+
+    void AnimationMove()
     {
-        while (Mathf.Abs(moldSprites[moldIndex].transform.position.x - dest.x) > 10 && currentMoving.Contains(moldIndex))
+        for (int i = 0; i < 4; i++)
         {
-            moldSprites[moldIndex].transform.position += Vector3.left * arrowIndex * animationSpeed;
-            yield return null;
+            int index = -1;
+            if (currentMoving[0] == i)
+            {
+                index = 0;
+            }
+            else if (currentMoving[1] == i)
+            {
+                index = 1;
+            }
+            if (index != -1)
+            {
+                if (Mathf.Abs(moldSprites[i].transform.position.x - currentDestination[index]) > 50)
+                {
+                    moldSprites[i].transform.position += Vector3.right * currentOrientation[index] * Time.deltaTime * animationSpeed;
+                }
+                else
+                {
+                    moldSprites[i].transform.position = new Vector2(currentDestination[index], moldSprites[i].transform.position.y);
+                }
+            }
+            else
+            {
+                moldSprites[i].transform.position = centerPosition + Vector2.right * 550;
+            }
         }
-        moldSprites[moldIndex].transform.position = dest;
     }
 }

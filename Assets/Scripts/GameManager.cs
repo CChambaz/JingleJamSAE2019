@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    private int snowAmount;
-    public int SnowAmount
+    private float snowAmount;
+    public float SnowAmount
     {
         get => snowAmount;
         set
