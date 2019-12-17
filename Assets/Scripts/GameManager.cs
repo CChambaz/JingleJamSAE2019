@@ -103,12 +103,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        statsManagerInstance = GetComponent<StatsManager>();
     }
     
     public void Start()
     {
         SetTypeGame((int)type);
-        statsManagerInstance = GetComponent<StatsManager>();
         menu = GameObject.Find("CanvasMenu").GetComponent<Canvas>();
     }
     
