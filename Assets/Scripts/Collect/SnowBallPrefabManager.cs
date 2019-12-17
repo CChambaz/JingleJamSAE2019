@@ -26,7 +26,7 @@ public class SnowBallPrefabManager : MonoBehaviour
             }
             case 1:
             {
-                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection;
+                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed;
                 break;
             }
             case 3:
@@ -54,7 +54,7 @@ public class SnowBallPrefabManager : MonoBehaviour
                 }
             case 1:
             {
-                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection;
+                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed;
                 break;
             }
             case 2:

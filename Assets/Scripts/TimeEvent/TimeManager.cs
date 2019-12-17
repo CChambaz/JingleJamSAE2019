@@ -252,8 +252,8 @@ public class TimeManager : MonoBehaviour
                     GameManager.Instance.StatsManagerInstance.TempestForce = 0;
                         break;
                 case WeatherTypeSO.WeatherType.STORM:
-                    GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 0.5f;
-                    GameManager.Instance.StatsManagerInstance.FallingSpeed = 3;
+                    GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 0.25f;
+                    GameManager.Instance.StatsManagerInstance.FallingSpeed = 10;
                     GameManager.Instance.StatsManagerInstance.SpawningSize = 8;
                     GameManager.Instance.StatsManagerInstance.TempestForce = 1;
                     GameManager.Instance.StatsManagerInstance.TempestDirection = new Vector2(Random.value * 2 - 1, Random.value * -1).normalized;
