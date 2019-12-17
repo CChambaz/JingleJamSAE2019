@@ -8,11 +8,11 @@ public class Client : MonoBehaviour
 {
     [SerializeField] private CanvasGroup[] itemsPanel;
     [SerializeField] private Image[] itemsImage;
+    [SerializeField] private int[] itemsUnlockAtClient;
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text moneyText;
-    [SerializeField] private Button validationButton;
-    
+
     private bool isWaiting;
     public bool IsWaiting
     {
@@ -79,7 +79,7 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isWaiting)
+        if (!isWaiting || GameManager.Instance.InPause)
             return;
 
         waitingTime += Time.deltaTime;
@@ -87,6 +87,7 @@ public class Client : MonoBehaviour
         if (satisfied || waitingTime >= waitingFor)
         {
             clientManager.DespawnClient(index, satisfied);
+            moneyGiven = 0;
             satisfied = false;
             isWaiting = false;
             return;
@@ -106,7 +107,10 @@ public class Client : MonoBehaviour
     {
         for (int i = 0; i < order.Length; i++)
         {
-            order[i] = Random.Range(0, 10);
+            if (itemsUnlockAtClient[i] > clientManager.ClientSatisfiedCount)
+                order[i] = 0;
+            else
+                order[i] = Random.Range(1, 10);
         }
         
         for (int i = 0; i < order.Length; i++)
@@ -114,8 +118,6 @@ public class Client : MonoBehaviour
             if (order[i] > 0)
             {
                 itemsPanel[i].alpha = 1.0f;
-                
-                // TODO: Add stock values instead of the 0
                 itemsPanel[i].GetComponentInChildren<TMP_Text>().text = order[i].ToString();
                 moneyGiven += clientManager.snowballValues[i] * order[i];
             }
@@ -132,8 +134,11 @@ public class Client : MonoBehaviour
             return;
 
         GameManager.Instance.MoneyAmount += moneyGiven;
+
+        for (int i = 0; i < order.Length; i++)
+            GameManager.Instance.SnowballAmount[i] -= order[i];
+        
         clientManager.CheckStorage();
-        moneyGiven = 0;
         satisfied = true;
     }
 

@@ -33,7 +33,7 @@ public class MoldClass
         }
     }
 
-    private int automationLevel = 1;
+    private int automationLevel = 0;
     public int AutomationLevel
     {
         get => automationLevel;
