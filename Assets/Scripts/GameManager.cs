@@ -51,6 +51,13 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    private StatsManager statsManagerInstance;
+    public StatsManager StatsManagerInstance
+    {
+        get => statsManagerInstance;
+        set => statsManagerInstance = value;
+    }
+
     private float snowAmount;
     public float SnowAmount
     {
@@ -100,6 +107,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         SetTypeGame((int)type);
+        statsManagerInstance = GetComponent<StatsManager>();
     }
     
     public void SetTypeGame(int type)
