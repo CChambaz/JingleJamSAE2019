@@ -11,8 +11,7 @@ public class Client : MonoBehaviour
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text moneyText;
-    [SerializeField] private Button validationButton;
-    
+
     private bool isWaiting;
     public bool IsWaiting
     {
@@ -79,7 +78,7 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isWaiting)
+        if (!isWaiting || GameManager.Instance.InPause)
             return;
 
         waitingTime += Time.deltaTime;

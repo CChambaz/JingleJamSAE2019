@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
     [SerializeField] private Canvas View_3;
+    
+    [SerializeField] private Text TxtSnowAmount;
+    [SerializeField] private Text TxtSnowBallAmount;
+    [SerializeField] private Text TxtMoneyAmount;
 
     private Canvas canvasSelect;
     private ClientManager clientManager;
@@ -16,11 +20,7 @@ public class GameManager : MonoBehaviour
         get => clientManager;
         set => clientManager = value;
     }
-
-    [SerializeField] private Text TxtSnowAmount;
-    [SerializeField] private Text TxtSnowBallAmount;
-    [SerializeField] private Text TxtMoneyAmount;
-
+    
     public enum GameState
     {
         MAIN_MENU,
@@ -42,17 +42,7 @@ public class GameManager : MonoBehaviour
         FLAKE
     }
 
-    public void Start()
-    {
-        SetTypeGame((int)type);
-    }
-
     public static GameManager Instance;
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     private int snowAmount;
     public int SnowAmount
@@ -92,6 +82,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        Instance = this;
+    }
+    
+    public void Start()
+    {
+        SetTypeGame((int)type);
+    }
+    
     public void SetTypeGame(int type)
     {
         switch (type)
@@ -125,6 +125,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Canvas menu;
     private bool inPause = false;
+    public bool InPause
+    {
+        get => inPause;
+        set => inPause = value;
+    }
 
     public void BtnPause()
     {
