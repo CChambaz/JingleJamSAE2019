@@ -109,6 +109,12 @@ public class BasketController : MonoBehaviour
                     collectManager.CurrentSnowBasket = collectManager.MaximumSnowBasket;
                 }
             }
+
+            if (collision.tag == "Stone")
+            {
+                Destroy(collision.gameObject);
+                collectManager.CurrentSnowBasket = 0;
+            }
         }
     }
 
