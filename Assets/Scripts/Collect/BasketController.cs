@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BasketController : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class BasketController : MonoBehaviour
     [SerializeField] float moveBasketVelocity;
     [SerializeField] float basketEmptyingPositionY;
     float basketPositionYBackup;
-    bool hasStartedWaitCoroutine = false;
+    bool hasStartedWaitTimer = false;
     [SerializeField] float waitTime;
+    [SerializeField] TMP_Text amountBasketTMP;
+    [SerializeField] Transform basketSpriteTransform;
 
     enum BasketEmptyingStatus
     {
@@ -29,11 +32,15 @@ public class BasketController : MonoBehaviour
         WAIT_EMPTY,
         GO_UP,
     }
+    float waitTimeBasketDown;
 
     BasketEmptyingStatus basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
 
     private void Update()
     {
+        //amountBasketTMP
+        amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
+        amountBasketTMP.text = collectManager.CurrentSnowBasket.ToString();
         if (canMoveBasket)
         {
             if (Input.GetMouseButtonDown(0))                //Not sure it works on mobile
@@ -118,10 +125,24 @@ public class BasketController : MonoBehaviour
 
     void WaitEmpty()
     {
-        if (!hasStartedWaitCoroutine)
+        if (!hasStartedWaitTimer)
         {
-            StartCoroutine("WaitEmptyCoroutine");
-            hasStartedWaitCoroutine = true;
+            waitTimeBasketDown = Time.time;
+            hasStartedWaitTimer = true;
+        }
+
+        if (Time.time > waitTimeBasketDown + waitTime)
+        {
+
+            GameManager.Instance.SnowAmount += collectManager.CurrentSnowBasket;
+            if (GameManager.Instance.SnowAmount > collectManager.MaximumSnowConainer)
+            {
+                GameManager.Instance.SnowAmount = collectManager.MaximumSnowConainer;
+            }
+            Debug.Log(GameManager.Instance.SnowAmount);
+            collectManager.CurrentSnowBasket = 0;
+            basketEmptyingStatus = BasketEmptyingStatus.GO_UP;
+            hasStartedWaitTimer = false;
         }
     }
 
@@ -135,19 +156,5 @@ public class BasketController : MonoBehaviour
             canMoveBasket = true;
             basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
         }
-    }
-
-    IEnumerator WaitEmptyCoroutine()
-    {
-        yield return new WaitForSeconds(waitTime);
-        GameManager.Instance.SnowAmount += collectManager.CurrentSnowBasket;
-        if (GameManager.Instance.SnowAmount > collectManager.MaximumSnowConainer)
-        {
-            GameManager.Instance.SnowAmount = collectManager.MaximumSnowConainer;
-        }
-        Debug.Log(GameManager.Instance.SnowAmount);
-        collectManager.CurrentSnowBasket = 0;
-        basketEmptyingStatus = BasketEmptyingStatus.GO_UP;
-        hasStartedWaitCoroutine = false;
     }
 }

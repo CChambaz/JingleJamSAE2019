@@ -21,7 +21,7 @@ public class SnowBallSpawner : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= spawnTime)
         {
-            Instantiate(snowBallPrefab, new Vector3(Random.Range(spawnMinX, spawnMaxX), spawnY, 0), Quaternion.identity);
+            Instantiate(snowBallPrefab, new Vector3(Random.Range(spawnMinX, spawnMaxX), spawnY, 0), Quaternion.identity, gameObject.transform);
             currentTime = 0;
         }
     }
