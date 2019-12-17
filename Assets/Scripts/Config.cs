@@ -54,34 +54,47 @@ public class Config : MonoBehaviour
         }
     }
 
+    private float LinearToDecibel(float linear)
+    {
+        float dB;
+
+        if (linear != 0)
+            dB = 20.0f * Mathf.Log10(linear);
+        else
+            dB = -144.0f;
+
+        return dB;
+    }
+
     public void SetVolume()
     {
         if (MainSlider.value != mainVolume)
         {
             mainVolume = (int)MainSlider.value;
             TxtMain.text = mainVolume.ToString();
-            MixerAudio.SetFloat("Master", (mainVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
+            MixerAudio.SetFloat("Master", LinearToDecibel(mainVolume/100));
         }
 
         if (MusicSlider.value != musicVolume)
         {
             musicVolume = (int)MusicSlider.value;
             TxtMusic.text = musicVolume.ToString();
-            MixerAudio.SetFloat("Music", (musicVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
+            MixerAudio.SetFloat("Music", LinearToDecibel(musicVolume / 100));
+           
         }
 
         if (SoundSlider.value != soundVolume)
         {
             soundVolume = (int)SoundSlider.value;
             TxtSound.text = soundVolume.ToString();
-            MixerAudio.SetFloat("Sound", (soundVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
+            MixerAudio.SetFloat("Sound", LinearToDecibel(soundVolume / 100));
         }
 
         if (AlertSlider.value != alertVolume)
         {
             alertVolume = (int)AlertSlider.value;
             TxtAlert.text = alertVolume.ToString();
-            MixerAudio.SetFloat("Alert", (alertVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
+            MixerAudio.SetFloat("Alert", LinearToDecibel(alertVolume / 100));
         }
     }
 
