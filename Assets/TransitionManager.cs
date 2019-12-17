@@ -33,6 +33,7 @@ public class TransitionManager : MonoBehaviour
         menu.GetComponentsInChildren<Button>()[0].GetComponent<CanvasGroup>().interactable = true;
         menu.GetComponentsInChildren<Button>()[0].GetComponent<CanvasGroup>().alpha = 1;
         menu.GetComponentsInChildren<Button>()[0].GetComponent<CanvasGroup>().blocksRaycasts = true;
+
         BtnPause();
         Destroy(menu.gameObject);
         Destroy(GameObject.FindObjectOfType<Config>().gameObject);
@@ -54,5 +55,10 @@ public class TransitionManager : MonoBehaviour
             menu.GetComponent<CanvasGroup>().alpha = 0;
             menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
+    }
+
+    private void Update()
+    {
+
     }
 }

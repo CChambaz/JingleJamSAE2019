@@ -22,6 +22,9 @@ public class Config : MonoBehaviour
     [SerializeField] private Text TxtAlert;
 
     [SerializeField] private AudioMixer MixerAudio;
+
+    private const int MAX_DECIBEL = 80;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,28 +44,28 @@ public class Config : MonoBehaviour
         {
             mainVolume = (int)MainSlider.value;
             TxtMain.text = mainVolume.ToString();
-            MixerAudio.SetFloat("Master", (mainVolume / 100 * 80) - 80);
+            MixerAudio.SetFloat("Master", (mainVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
         }
 
         if (MusicSlider.value != musicVolume)
         {
             musicVolume = (int)MusicSlider.value;
             TxtMusic.text = musicVolume.ToString();
-            MixerAudio.SetFloat("Music", (musicVolume / 100 * 80) - 80);
+            MixerAudio.SetFloat("Music", (musicVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
         }
 
         if (SoundSlider.value != soundVolume)
         {
             soundVolume = (int)SoundSlider.value;
             TxtSound.text = soundVolume.ToString();
-            MixerAudio.SetFloat("Sound", (soundVolume / 100 * 80) - 80);
+            MixerAudio.SetFloat("Sound", (soundVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
         }
 
         if (AlertSlider.value != alertVolume)
         {
             alertVolume = (int)AlertSlider.value;
             TxtAlert.text = alertVolume.ToString();
-            MixerAudio.SetFloat("Alert", (alertVolume / 100 * 80) - 80);
+            MixerAudio.SetFloat("Alert", (alertVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
         }
     }
 
