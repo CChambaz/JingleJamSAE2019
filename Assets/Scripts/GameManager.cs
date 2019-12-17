@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Canvas menu;
     [Header("View")]
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("MoneyAmount")]
     [SerializeField] private Text TxtMoneyAmount;
 
-    private Canvas canvasSelect;
+
     private ClientManager clientManager;
     public ClientManager ClientManager
     {
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour
     {
         SetTypeGame((int)type);
         statsManagerInstance = GetComponent<StatsManager>();
+        menu = GameObject.Find("CanvasMenu").GetComponent<Canvas>();
     }
     
     public void SetTypeGame(int type)
@@ -119,29 +122,36 @@ public class GameManager : MonoBehaviour
                 View_1.gameObject.SetActive(true);
                 View_2.GetComponent<CanvasGroup>().interactable = false;
                 View_2.GetComponent<CanvasGroup>().alpha = 0;
+                View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
+                View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
                 break;
             case (int)GameState.IN_GAME_2:
                 this.type = GameState.IN_GAME_2;
                 View_1.gameObject.SetActive(false);
                 View_2.GetComponent<CanvasGroup>().interactable = true;
                 View_2.GetComponent<CanvasGroup>().alpha = 1;
+                View_2.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
+                View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 break;
             case (int)GameState.IN_GAME_3:
                 this.type = GameState.IN_GAME_3;
                 View_1.gameObject.SetActive(false);
                 View_2.GetComponent<CanvasGroup>().interactable = false;
                 View_2.GetComponent<CanvasGroup>().alpha = 0;
+                View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 View_3.GetComponent<CanvasGroup>().interactable = true;
                 View_3.GetComponent<CanvasGroup>().alpha = 1;
+                View_3.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 break;
         }
     }
 
-    [SerializeField] private Canvas menu;
+  
     private bool inPause = false;
     public bool InPause
     {
@@ -152,16 +162,17 @@ public class GameManager : MonoBehaviour
     public void BtnPause()
     {
         inPause = !inPause;
-        Debug.Log(inPause);
         if (inPause)
         {
-            menu.gameObject.SetActive(true);
-            menu.GetComponent<RectTransform>().position = Vector3.zero;
+            menu.GetComponent<CanvasGroup>().interactable = true;
+            menu.GetComponent<CanvasGroup>().alpha = 1;
+            menu.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
         else
         {
-            menu.GetComponent<RectTransform>().position = Vector3.up * 10;
-            menu.gameObject.SetActive(false);
+            menu.GetComponent<CanvasGroup>().interactable = false;
+            menu.GetComponent<CanvasGroup>().alpha = 0;
+            menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
 }
