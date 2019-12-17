@@ -21,11 +21,22 @@ public class ClientManager : MonoBehaviour
     private List<Client> activeClients = new List<Client>();
     
     private int clientTotalCount;
+    public int ClientTotalCount
+    {
+        get => clientTotalCount;
+        set => clientTotalCount = value;
+    }
+
     private int clientSatisfiedCount;
+    public int ClientSatisfiedCount
+    {
+        get => clientSatisfiedCount;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.ClientManager = this;
         clients = new Client[maxClients];
 
         Vector3 nextPos = new Vector3(transform.position.x + clientDisableX, clientMaxY);
@@ -41,6 +52,9 @@ public class ClientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.A))
+            CheckStorage();
+        
         for (int i = 0; i < maxClients; i++)
         {
             if(clients[i].IsWaiting)
@@ -61,6 +75,7 @@ public class ClientManager : MonoBehaviour
         
         activeClients.Add(clients[index]);
         clientTotalCount++;
+        CheckStorage();
     }
 
     public void DespawnClient(int index, bool satisifed)
@@ -74,8 +89,36 @@ public class ClientManager : MonoBehaviour
         
         Transform clientTransform = clients[index].GetComponent<Transform>();
         clientTransform.localPosition = new Vector3(clientDisableX, clientMaxY);
+
+        CheckStorage();
         
         if (satisifed)
             clientSatisfiedCount++;
+    }
+    
+    public void CheckStorage()
+    {
+        bool hasEnoughSnowball = true;
+        
+        for (int i = 0; i < activeClients.Count; i++)
+        {
+            for (int j = 0; j < activeClients[i].Order.Length; j++)
+            {
+                if (activeClients[i].Order[j] > GameManager.Instance.SnowballAmount[j])
+                {
+                    hasEnoughSnowball = false;
+                    activeClients[i].UpdateItemImage(j, false);
+                }
+                else
+                    activeClients[i].UpdateItemImage(j);
+            }
+
+            if (hasEnoughSnowball)
+                activeClients[i].OrderCanBeAchieved = true;
+            else
+                activeClients[i].OrderCanBeAchieved = false;
+            
+            hasEnoughSnowball = true;
+        }
     }
 }
