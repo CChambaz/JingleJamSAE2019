@@ -8,6 +8,7 @@ public class Client : MonoBehaviour
 {
     [SerializeField] private CanvasGroup[] itemsPanel;
     [SerializeField] private Image[] itemsImage;
+    [SerializeField] private int[] itemsUnlockAtClient;
     [SerializeField] private Image clientImage;
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text moneyText;
@@ -106,7 +107,10 @@ public class Client : MonoBehaviour
     {
         for (int i = 0; i < order.Length; i++)
         {
-            order[i] = Random.Range(0, 10);
+            if (itemsUnlockAtClient[i] > clientManager.ClientSatisfiedCount)
+                order[i] = 0;
+            else
+                order[i] = Random.Range(1, 10);
         }
         
         for (int i = 0; i < order.Length; i++)
@@ -130,6 +134,10 @@ public class Client : MonoBehaviour
             return;
 
         GameManager.Instance.MoneyAmount += moneyGiven;
+
+        for (int i = 0; i < order.Length; i++)
+            GameManager.Instance.SnowballAmount[i] -= order[i];
+        
         clientManager.CheckStorage();
         satisfied = true;
     }

@@ -504,6 +504,7 @@ MonoBehaviour:
   - {fileID: 6758098512609877125}
   - {fileID: 6758098513770023771}
   itemsImage: []
+  itemsUnlockAtClient: 000000000a000000140000001e000000
   clientImage: {fileID: 6758098512378411630}
   timerImage: {fileID: 6758098514175625080}
   moneyText: {fileID: 2495888223478933859}
