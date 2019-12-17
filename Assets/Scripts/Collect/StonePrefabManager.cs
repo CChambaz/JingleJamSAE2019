@@ -15,6 +15,10 @@ public class StonePrefabManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (stoneRB.transform.position.y <= YDistanceDestroy)
         {
             Destroy(gameObject);                //To change when pooling system

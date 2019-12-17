@@ -40,6 +40,10 @@ public class BasketController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         //amountBasketTMP
         //amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
         amountBasketTMP.text = collectManager.CurrentSnowBasket.ToString();
@@ -57,7 +61,6 @@ public class BasketController : MonoBehaviour
                 {
                     if (downDragDistance < currentDragYPosition - Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
                     {
-                        Debug.Log("Test");
                         canMoveBasket = false;
                         basketPositionYBackup = transform.position.y;
                         basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
@@ -148,7 +151,6 @@ public class BasketController : MonoBehaviour
             {
                 GameManager.Instance.SnowAmount = collectManager.MaximumSnowConainer;
             }
-            Debug.Log(GameManager.Instance.SnowAmount);
             collectManager.CurrentSnowBasket = 0;
             basketEmptyingStatus = BasketEmptyingStatus.GO_UP;
             hasStartedWaitTimer = false;

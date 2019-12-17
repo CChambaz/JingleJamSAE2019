@@ -8,6 +8,7 @@ public class BigEvent : TimeEvent
     [SerializeField] private float promotions;
     public override void StartEvent()
     {
+        index = "Big";
         GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier = moldAccelerations;
         GameManager.Instance.StatsManagerInstance.SalesMultiplier = promotions;
     }

@@ -18,4 +18,5 @@ MonoBehaviour:
   seasons: 00000100
   weekDays: 01010101010101
   index: Sales
+  name: SummerSales
   promotions: 0.5

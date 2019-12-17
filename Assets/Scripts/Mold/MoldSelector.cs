@@ -31,12 +31,17 @@ public class MoldSelector : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))                //Not sure it works on mobile
+        AnimationMove();
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
+        if (Input.GetMouseButtonDown(0))
         {
             currentPressedTime = Time.time;
             currentDragPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         }
-        else if (Input.GetMouseButtonUp(0))             //Not sure it works on mobile
+        else if (Input.GetMouseButtonUp(0))
         {
             if (Time.time > currentPressedTime + minDragTime)
             {
@@ -52,9 +57,12 @@ public class MoldSelector : MonoBehaviour {
                 }
             }
         }
-        AnimationMove();
     }
     public void MoveSelector(int arrowIndex) {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         //moldSprites[moldManager.SelectedMold].SetActive(false);
         currentMoving[0] = moldManager.SelectedMold;
         currentDestination[0] = centerPosition.x + 550 * arrowIndex;

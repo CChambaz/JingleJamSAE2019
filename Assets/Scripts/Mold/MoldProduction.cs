@@ -48,6 +48,10 @@ public class MoldProduction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (GameManager.Instance.SnowAmount >= moldManager.CurrentMoldSO.SnowCost && moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] < moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
         {
             buttonText.text = "Create";
@@ -117,6 +121,10 @@ public class MoldProduction : MonoBehaviour
 
     public void OnButtonClick()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (ready)
         {
             ready = false;

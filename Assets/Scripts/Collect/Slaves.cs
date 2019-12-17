@@ -26,6 +26,11 @@ public class Slaves : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            currentTime += Time.deltaTime;
+            return;
+        }
         if (amountSlaves > 0)
         {
             if (!currentTimeWasSet)

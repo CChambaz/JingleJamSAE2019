@@ -4874,8 +4874,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowBallRB: {fileID: 3140123463434787857}
-  fallingSpeed: 0
+  fallingSpeed: 5
+  speed: 5
   YDistanceDestroy: -6
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &8325806177307196556
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bf1d88aab39a944f8e7ef7f90d7f7cf, type: 3}
-  m_Name: WinterSales
+  m_Script: {fileID: 11500000, guid: cc602372b0b75954b8469862c673956b, type: 3}
+  m_Name: Subprimes
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 1
-  percentage: 0.5
-  seasons: 01000000
-  weekDays: 01010101010101
-  index: Sales
-  promotions: 0.5
+  duration: 4
+  percentage: 0.2
+  seasons: 01010101
+  weekDays: 00000001000000
+  index: Strike
+  name: Supprimes
+  moldAccelerations: 0.5
+  promotions: 1.1
