@@ -48,7 +48,7 @@ public class MoldProduction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.SnowAmount >= moldManager.CurrentMoldSO.SnowCost && moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] <= moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
+        if (GameManager.Instance.SnowAmount >= moldManager.CurrentMoldSO.SnowCost && moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.SnowballAmount[moldManager.SelectedMold] < moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
         {
             buttonText.text = "Create";
             if (!ready)
@@ -79,7 +79,7 @@ public class MoldProduction : MonoBehaviour
                 buttonProduction.interactable = false;
                 currentTimer = 0;
             }
-            else if (GameManager.Instance.SnowballAmount[moldManager.SelectedMold] > moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
+            else if (GameManager.Instance.SnowballAmount[moldManager.SelectedMold] >= moldManager.CurrentMoldSO.MaxStock * moldManager.CurrentMoldClass.StockLevel)
             {
                 buttonText.text = "Out of stack";
                 buttonProduction.interactable = false;
@@ -88,7 +88,7 @@ public class MoldProduction : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            if (moldManager.MoldClasses[i].AutomationLevel > 0 && GameManager.Instance.SnowAmount >= moldManager.MoldsSO[i].SnowCost && moldManager.MoldClasses[i].Unlocked && GameManager.Instance.SnowballAmount[i] <= moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel)
+            if (moldManager.MoldClasses[i].AutomationLevel > 0 && GameManager.Instance.SnowAmount >= moldManager.MoldsSO[i].SnowCost && moldManager.MoldClasses[i].Unlocked && GameManager.Instance.SnowballAmount[i] < moldManager.MoldsSO[i].MaxStock * moldManager.MoldClasses[i].StockLevel)
             {
                 currentAutomationTimer[i] += moldManager.MoldsSO[i].AutomationSpeed * moldManager.MoldClasses[i].AutomationLevel * Time.deltaTime * GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier;
                 automationTimer[i].fillAmount = currentAutomationTimer[i];
