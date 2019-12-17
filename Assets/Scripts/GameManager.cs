@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
             TxtSnowBallAmountGreen.text = snowballAmount[1].ToString();
             TxtSnowBallAmountRed.text = snowballAmount[2].ToString();
             TxtSnowBallAmountBlue.text = snowballAmount[3].ToString();
+            clientManager.CheckStorage();
             return snowballAmount;
         }
         set
         {
             snowballAmount = value;
-            clientManager.CheckStorage();
         }
     }
 
