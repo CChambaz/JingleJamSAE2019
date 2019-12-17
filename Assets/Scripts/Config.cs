@@ -25,13 +25,14 @@ public class Config : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (GameObject.FindObjectsOfType<ObjectDontDestroy>().Length == 1)
+        {
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     public void SetVolume()
@@ -64,4 +65,6 @@ public class Config : MonoBehaviour
             MixerAudio.SetFloat("Alert", (alertVolume / 100 * 80) - 80);
         }
     }
+
+
 }
