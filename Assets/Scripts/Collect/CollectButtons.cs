@@ -12,25 +12,21 @@ public class CollectButtons : MonoBehaviour
 
     public void IncreaseBasketCapacity()
     {
-        if (GameManager.Instance.MoneyAmount > basketCapacityPrice)           //You have money to pay
+        if (GameManager.Instance.MoneyAmount * GameManager.Instance.StatsManagerInstance.SalesMultiplier > basketCapacityPrice)           //You have money to pay
         {
             collectManager.MaximumSnowBasket += increaseCapacityBasketNumber;
-            GameManager.Instance.MoneyAmount -= basketCapacityPrice;
+            GameManager.Instance.MoneyAmount -= (int)(basketCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
             basketCapacityPrice *= collectManager.PrinceMultiplicator;
-            Debug.Log(collectManager.MaximumSnowBasket);
-            Debug.Log(GameManager.Instance.MoneyAmount);
         }
     }
 
     public void IncreaseContainerCapacity()
     {
-        if (GameManager.Instance.MoneyAmount > containerCapacityPrice)           //You have money to pay
+        if (GameManager.Instance.MoneyAmount * GameManager.Instance.StatsManagerInstance.SalesMultiplier > containerCapacityPrice)           //You have money to pay
         {
             collectManager.MaximumSnowConainer += increaseCapacityContainerNumber;
-            GameManager.Instance.MoneyAmount -= containerCapacityPrice;
+            GameManager.Instance.MoneyAmount -= (int)(containerCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
             containerCapacityPrice *= collectManager.PrinceMultiplicator;
-            Debug.Log(collectManager.MaximumSnowConainer);
-            Debug.Log(GameManager.Instance.MoneyAmount);
         }
     }
 }
