@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     }
 
     private GameState type = GameState.IN_GAME_1;
+    public GameState Type => type;
 
     public const int SNOWBALL_TYPE_COUNT = 4;
 

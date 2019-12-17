@@ -21,7 +21,6 @@ public class SnowProduction : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
     }
 }

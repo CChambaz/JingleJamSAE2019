@@ -2104,6 +2104,11 @@ MonoBehaviour:
   - {fileID: 3814168697316964512, guid: 74baf1561fdc44a4a8fdc9db8d46f613, type: 3}
   - {fileID: 5149376864832545058, guid: cd8d676ecd720fe478874d1027fad296, type: 3}
   - {fileID: 7633357206836696786, guid: 7e28843e443ff95479d40f3e6b95fd5d, type: 3}
+  particle:
+  - {fileID: 4591106261522281638, guid: 3000b348dbf0b534abd0fbe4957026f6, type: 3}
+  - {fileID: 6044391638188372, guid: b5e59271016d36a4fa4137e204411403, type: 3}
+  - {fileID: 387909521197366570, guid: 23b8984b5a55493439c2ca2928a7f924, type: 3}
+  - {fileID: 5418882186649311381, guid: 13e085b043fafbb4fb66da49da7e55a0, type: 3}
 --- !u!1 &9134795845492276329
 GameObject:
   m_ObjectHideFlags: 0
