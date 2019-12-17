@@ -91,9 +91,14 @@ public class ClientManager : MonoBehaviour
         clientTransform.localPosition = new Vector3(clientDisableX, clientMaxY);
 
         CheckStorage();
-        
+
         if (satisifed)
+        {
             clientSatisfiedCount++;
+            
+            for(int i = 0; i < clients.Length; i++)
+                clients[i].UpdateMaxItemIndex();
+        }
     }
     
     public void CheckStorage()
