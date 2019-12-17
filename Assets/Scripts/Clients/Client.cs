@@ -63,15 +63,14 @@ public class Client : MonoBehaviour
 
     private int minItemIndex = 0;
     private int maxItemIndex = 0;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         clientManager = FindObjectOfType<ClientManager>();
-        
+
         order = new int[GameManager.SNOWBALL_TYPE_COUNT];
         itemsImage = new Image[GameManager.SNOWBALL_TYPE_COUNT];
-        
+
         for (int i = 0; i < order.Length; i++)
             order[i] = 0;
 
