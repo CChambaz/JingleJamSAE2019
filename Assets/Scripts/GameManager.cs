@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private Canvas menu;
 
-
+    private Charge charge;
     private ClientManager clientManager;
     public ClientManager ClientManager
     {
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         get => moneyAmount;
         set
         {
+            charge.AnnualRevenu += value;
             moneyAmount = value;
             TxtMoneyAmount.text = value.ToString();
         }
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         statsManagerInstance = GetComponent<StatsManager>();
+        charge = FindObjectOfType<Charge>();
     }
     
     public void Start()
