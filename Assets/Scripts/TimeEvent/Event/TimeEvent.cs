@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TimeEvent : ScriptableObject
 {
-    [SerializeField] private Sprite sprite = null;
+    [SerializeField] private Sprite sprite;
     public Sprite Sprite => sprite;
 
-    [SerializeField] private float duration = 0;
+    [SerializeField] private float duration;
     public float Duration => duration;
 
-    [SerializeField] private float percentage = 0;
+    [SerializeField] private float percentage;
     public float Percentage => percentage;
 
     [SerializeField] private bool[] seasons = new bool[4];
@@ -19,7 +19,7 @@ public class TimeEvent : ScriptableObject
     [SerializeField] private bool[] weekDays = new bool[7];
     public bool[] WeekDays => weekDays;
 
-    [SerializeField] protected string index = "";
+    [SerializeField] protected string index;
     public string Index => index;
 
     public string IndexReset{
@@ -27,7 +27,7 @@ public class TimeEvent : ScriptableObject
         set => index = value;
     }
 
-    [SerializeField] private string name = "Null";
+    [SerializeField] private string name;
     public string Name => name;
 
     public virtual void StartEvent(){}

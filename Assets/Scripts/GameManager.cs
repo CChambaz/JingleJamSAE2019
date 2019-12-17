@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Canvas menu;
+    //Variables
     [Header("View")]
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
     [Header("MoneyAmount")]
     [SerializeField] private Text TxtMoneyAmount;
 
+    private bool inPause = false;
 
+    private Canvas menu;
+
+    private Charge charge;
     private ClientManager clientManager;
     public ClientManager ClientManager
     {
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
         get => moneyAmount;
         set
         {
+            charge.AnnualRevenu += value;
             moneyAmount = value;
             TxtMoneyAmount.text = value.ToString();
         }
@@ -106,6 +111,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         statsManagerInstance = GetComponent<StatsManager>();
+        charge = FindObjectOfType<Charge>();
     }
     
     public void Start()
@@ -114,9 +120,9 @@ public class GameManager : MonoBehaviour
         menu = GameObject.Find("CanvasMenu").GetComponent<Canvas>();
     }
     
-    public void SetTypeGame(int type)
+    public void SetTypeGame(int state)
     {
-        switch (type)
+        switch (state)
         {
             case (int)GameState.IN_GAME_1:
                 this.type = GameState.IN_GAME_1;
@@ -130,8 +136,8 @@ public class GameManager : MonoBehaviour
                 View_4.GetComponent<CanvasGroup>().interactable = false;
                 View_4.GetComponent<CanvasGroup>().alpha = 0;
                 View_4.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
                 break;
+
             case (int)GameState.IN_GAME_2:
                 this.type = GameState.IN_GAME_2;
                 View_1.gameObject.SetActive(false);
@@ -145,6 +151,7 @@ public class GameManager : MonoBehaviour
                 View_4.GetComponent<CanvasGroup>().alpha = 0;
                 View_4.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 break;
+
             case (int)GameState.IN_GAME_3:
                 this.type = GameState.IN_GAME_3;
                 View_1.gameObject.SetActive(false);
@@ -173,9 +180,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
   
-    private bool inPause = false;
     public bool InPause
     {
         get => inPause;

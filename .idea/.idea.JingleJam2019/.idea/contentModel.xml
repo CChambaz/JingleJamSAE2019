@@ -7,15 +7,21 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Charge" t="Include">
+            <e p="Charge.cs" t="Include" />
+          </e>
           <e p="Clients" t="Include">
             <e p="Client.cs" t="Include" />
             <e p="ClientManager.cs" t="Include" />
           </e>
           <e p="Collect" t="Include">
             <e p="BasketController.cs" t="Include" />
+            <e p="CollectButtons.cs" t="Include" />
             <e p="CollectManager.cs" t="Include" />
+            <e p="Slaves.cs" t="Include" />
             <e p="SnowBallPrefabManager.cs" t="Include" />
             <e p="SnowBallSpawner.cs" t="Include" />
+            <e p="StonePrefabManager.cs" t="Include" />
           </e>
           <e p="Config.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
@@ -23,10 +29,28 @@
             <e p="MoldManager.cs" t="Include" />
             <e p="MoldProduction.cs" t="Include" />
             <e p="MoldSelector.cs" t="Include" />
+            <e p="MoldUpgrade.cs" t="Include" />
             <e p="ScriptableObject" t="Include">
               <e p="MoldSO.cs" t="Include" />
             </e>
+            <e p="SnowProduction.cs" t="Include" />
           </e>
+          <e p="ObjectDontDestroy.cs" t="Include" />
+          <e p="StatsManager.cs" t="Include" />
+          <e p="TimeEvent" t="Include">
+            <e p="Event" t="Include">
+              <e p="BigEvent.cs" t="Include" />
+              <e p="DayPanel.cs" t="Include" />
+              <e p="SalesEvent.cs" t="Include" />
+              <e p="StrikeEvent.cs" t="Include" />
+              <e p="TimeEvent.cs" t="Include" />
+            </e>
+            <e p="TimeManager.cs" t="Include" />
+            <e p="Weather" t="Include">
+              <e p="WeatherTypeSO.cs" t="Include" />
+            </e>
+          </e>
+          <e p="TransitionManager.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

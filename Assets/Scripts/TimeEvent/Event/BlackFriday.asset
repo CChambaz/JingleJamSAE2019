@@ -18,5 +18,5 @@ MonoBehaviour:
   seasons: 01010101
   weekDays: 00000000010101
   index: Sales
-  name: BlackFriday
+  name: Black friday
   promotions: 0.1

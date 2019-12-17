@@ -18,5 +18,5 @@ MonoBehaviour:
   seasons: 00010000
   weekDays: 01010101010101
   index: Sales
-  name: SpringSales
+  name: Spring sales
   promotions: 0.5

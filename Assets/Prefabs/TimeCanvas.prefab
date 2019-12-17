@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7838469995178778156}
   - component: {fileID: 7838469995178778159}
   - component: {fileID: 587738057}
+  - component: {fileID: 2893140333823198247}
   m_Layer: 5
   m_Name: TimeCanvas
   m_TagString: Untagged
@@ -131,8 +132,13 @@ MonoBehaviour:
   eventName: {fileID: 0}
   eventImage: {fileID: 0}
   allDayPanel: {fileID: 7838469995429340149}
-  dayPrefab: {fileID: 0}
+  dayPrefab: {fileID: 3554000021221132505, guid: 41d85370ad5b045448f9e003a4a1c631,
+    type: 3}
   weatherTypes:
+  - {fileID: 11400000, guid: fc5999efbe6015c4dbb376c44d765985, type: 2}
+  - {fileID: 11400000, guid: 1acaaa9fa53dc5b48a1c5231328f4073, type: 2}
+  - {fileID: 11400000, guid: 01c1a512726eb73498eacc571a5c14af, type: 2}
+  - {fileID: 11400000, guid: 153eeac9808c27c4faff59ab71d8bf3f, type: 2}
   - {fileID: 11400000, guid: 090d9b7f05968084da4bc71309512704, type: 2}
 --- !u!225 &587738057
 CanvasGroup:
@@ -146,6 +152,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2893140333823198247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7838469995178778158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00521524a6c5c684082862e907d7014e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taxeText: {fileID: 0}
+  maintainText: {fileID: 0}
+  taxesSlaveCost: 0
+  taxesInstallationCost: 0
+  taxesOnAnnualRevenu: 0
+  installationMaintenance: 0
 --- !u!1 &7838469995429340148
 GameObject:
   m_ObjectHideFlags: 0

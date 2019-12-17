@@ -18,6 +18,6 @@ MonoBehaviour:
   seasons: 00000100
   weekDays: 01010101010101
   index: Strike
-  name: FrenchRevolution
+  name: French revolution
   moldAccelerations: 0.5
   promotions: 1.5

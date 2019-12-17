@@ -41,6 +41,10 @@ public class SnowBallPrefabManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (snowBallRB.transform.position.y <= YDistanceDestroy)
         {
             Destroy(gameObject);                //To change when pooling system

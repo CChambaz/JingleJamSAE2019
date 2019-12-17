@@ -18,5 +18,5 @@ MonoBehaviour:
   seasons: 00000001
   weekDays: 01010101010101
   index: Sales
-  name: AutumnSales
+  name: Autumn sales
   promotions: 0.5

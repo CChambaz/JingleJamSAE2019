@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CollectButtons : MonoBehaviour
 {
@@ -10,10 +11,24 @@ public class CollectButtons : MonoBehaviour
     [SerializeField] int containerCapacityPrice = 10;
     [SerializeField] int increaseCapacityBasketNumber = 10;
     [SerializeField] int increaseCapacityContainerNumber = 30;
+    [SerializeField] TextMeshProUGUI IncreaseBasketTMP;
+    [SerializeField] TextMeshProUGUI IncreaseContainerTMP;
+    [SerializeField] TextMeshProUGUI IncreaseSlavesTMP;
 
     private void Start()
     {
         slavesManager = FindObjectOfType<Slaves>();
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
+        IncreaseBasketTMP.text = "Capacity: " + collectManager.MaximumSnowBasket + "\n" + "Cost: " + (basketCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
+        IncreaseContainerTMP.text = "Capacity: " + collectManager.MaximumSnowConainer + "\n" + "Cost: " + (containerCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
+        IncreaseSlavesTMP.text = "Slaves: " + slavesManager.AmountSlaves + "\n" + "Cost: " + (slavesManager.SlavePrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
     }
 
     public void IncreaseBasketCapacity()

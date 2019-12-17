@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MoldUpgrade : MonoBehaviour
 {
     private MoldManager moldManager;
+    private Charge charge;
     [SerializeField] private Button automationUpgradeButton;
     [SerializeField] private TextMeshProUGUI automationUpgradeText;
     [SerializeField] private Button speedUpgradeButton;
@@ -46,6 +47,7 @@ public class MoldUpgrade : MonoBehaviour
     {
         GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.AutomationLevel++;
+        charge.AutomationCount++;
     }
 
     public void UpdradeSpeed()
