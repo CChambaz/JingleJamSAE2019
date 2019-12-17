@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bf1d88aab39a944f8e7ef7f90d7f7cf, type: 3}
-  m_Name: BlackFriday
+  m_Script: {fileID: 11500000, guid: a0193c4906c017b4084e9d4a2ad40b98, type: 3}
+  m_Name: SunWeather
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  duration: 3
-  percentage: 0.7
-  seasons: 01010101
-  weekDays: 00000000010101
-  index: Sales
-  promotions: 0.1
+  type: 0
+  percentAppearance: 0.25
+  weatherImage: {fileID: 0}
+  name: Sun

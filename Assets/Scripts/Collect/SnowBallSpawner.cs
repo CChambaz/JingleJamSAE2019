@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SnowBallSpawner : MonoBehaviour
 {
@@ -14,9 +16,10 @@ public class SnowBallSpawner : MonoBehaviour
     [SerializeField] float randomSpawnFloatTime = 0.25f;
     [SerializeField] float currentRandom = 0;
 
-    private void Start()
+    void Start()
     {
-        
+        spawnMaxX *= GameManager.Instance.StatsManagerInstance.SpawningSize;
+        spawnMinX *= GameManager.Instance.StatsManagerInstance.SpawningSize;
     }
 
     private void Update()
@@ -29,6 +32,4 @@ public class SnowBallSpawner : MonoBehaviour
             currentTime = 0;
         }
     }
-
-
 }
