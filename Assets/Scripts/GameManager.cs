@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("View")]
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
     [SerializeField] private Canvas View_3;
-    
+    [Header("SnowAmount")]
     [SerializeField] private Text TxtSnowAmount;
-    [SerializeField] private Text TxtSnowBallAmount;
+    [Header("SnowBallAmount")]
+    [SerializeField] private Text TxtSnowBallAmountWhite;
+    [SerializeField] private Text TxtSnowBallAmountGreen;
+    [SerializeField] private Text TxtSnowBallAmountBlue;
+    [SerializeField] private Text TxtSnowBallAmountRed;
+    [Header("MoneyAmount")]
     [SerializeField] private Text TxtMoneyAmount;
 
     private Canvas canvasSelect;
@@ -62,7 +68,10 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            TxtSnowBallAmount.text = snowballAmount[0].ToString();
+            TxtSnowBallAmountWhite.text = snowballAmount[0].ToString();
+            TxtSnowBallAmountGreen.text = snowballAmount[1].ToString();
+            TxtSnowBallAmountRed.text = snowballAmount[2].ToString();
+            TxtSnowBallAmountBlue.text = snowballAmount[3].ToString();
             return snowballAmount;
         }
         set
