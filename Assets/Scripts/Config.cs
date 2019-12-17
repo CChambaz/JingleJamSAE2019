@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Config : MonoBehaviour
 {
+    [Header("Menu Audio")]
     private float mainVolume;
     private float musicVolume;
     private float soundVolume;
@@ -21,15 +22,30 @@ public class Config : MonoBehaviour
     [SerializeField] private Text TxtSound;
     [SerializeField] private Text TxtAlert;
 
+    [Header("Audio")]
     [SerializeField] private AudioMixer MixerAudio;
+
+    [SerializeField] AudioMixerGroup sound;
+    [SerializeField] AudioMixerGroup alert;
+
+    [Header("Leprechaun Happy")]
+    [SerializeField] private AudioClip[] happy;
+
+    [Header("Leprechaun unhappy")]
+    [SerializeField] private AudioClip[] unhappy;
+
+    [SerializeField] private GameObject prefabClip;
+
+    private AudioSource[] audioList;
 
     private const int MAX_DECIBEL = 80;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.FindObjectsOfType<ObjectDontDestroy>().Length == 1)
+        if (GameObject.FindObjectsOfType<Config>().Length == 1)
         {
+            audioList = GetComponents<AudioSource>();
             DontDestroyOnLoad(this);
         }
         else
@@ -67,6 +83,68 @@ public class Config : MonoBehaviour
             TxtAlert.text = alertVolume.ToString();
             MixerAudio.SetFloat("Alert", (alertVolume / 100 * MAX_DECIBEL) - MAX_DECIBEL);
         }
+    }
+
+    public enum SoundType
+    {
+        HAPPY = 0,
+        UNHAPPY = 1
+    }
+
+    public void PlayAudio(SoundType type)
+    {
+        int audio = CheckFreeAudioSource();
+        int result;
+        switch (type)
+        {
+
+            case SoundType.HAPPY:
+                result = Random.Range(0, happy.Length);
+                audioList[audio].outputAudioMixerGroup = sound;
+                audioList[audio].PlayOneShot(happy[result]);
+                break;
+
+            case SoundType.UNHAPPY:
+                result = Random.Range(0, unhappy.Length);
+                audioList[audio].outputAudioMixerGroup = sound;
+                audioList[audio].PlayOneShot(unhappy[result]);
+                break;
+        }
+    }
+
+    public void Play(int type)
+    {
+        int audio = CheckFreeAudioSource();
+        int result;
+        switch (type)
+        {
+
+            case (int)SoundType.HAPPY:
+                result = Random.Range(0, happy.Length);
+                audioList[audio].outputAudioMixerGroup = sound;
+                audioList[audio].PlayOneShot(happy[result]);
+                break;
+
+            case (int)SoundType.UNHAPPY:
+                result = Random.Range(0, unhappy.Length);
+                audioList[audio].outputAudioMixerGroup = sound;
+                audioList[audio].PlayOneShot(unhappy[result]);
+                break;
+        }
+    }
+
+    private int CheckFreeAudioSource()
+    {
+        
+        for (int i = 0; i < audioList.Length; i++)
+        {
+            if (!audioList[i].isPlaying)
+            {
+                Debug.Log(i);
+                return i;
+            }
+        }
+        return 0;
     }
 
 
