@@ -60,6 +60,9 @@ public class Client : MonoBehaviour
     private bool satisfied = false;
     
     private ClientManager clientManager;
+
+    private int minItemIndex = 0;
+    private int maxItemIndex = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -105,11 +108,16 @@ public class Client : MonoBehaviour
     
     public void SetRandomOrder()
     {
-        for (int i = 0; i < order.Length; i++)
+        int forceItemID = Random.Range(minItemIndex, maxItemIndex + 1);
+        
+        order[forceItemID] = Random.Range(1, 10);
+        
+        for (int i = 0; i < maxItemIndex; i++)
         {
-            if (itemsUnlockAtClient[i] > clientManager.ClientSatisfiedCount)
-                order[i] = 0;
-            else
+            if (i == forceItemID)
+                continue;
+            
+            if (Random.Range(0, 100) > 50)
                 order[i] = Random.Range(1, 10);
         }
         
@@ -142,6 +150,15 @@ public class Client : MonoBehaviour
         satisfied = true;
     }
 
+    public void UpdateMaxItemIndex()
+    {
+        if (maxItemIndex + 1 >= GameManager.SNOWBALL_TYPE_COUNT)
+            maxItemIndex = GameManager.SNOWBALL_TYPE_COUNT - 1;
+        
+        if (itemsUnlockAtClient[maxItemIndex + 1] < clientManager.ClientSatisfiedCount)
+            maxItemIndex++;
+    }
+    
     public void UpdateItemImage(int index, bool canBeSell = true)
     {
         if(canBeSell)
