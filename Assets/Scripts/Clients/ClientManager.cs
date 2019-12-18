@@ -60,7 +60,8 @@ public class ClientManager : MonoBehaviour
             if(clients[i].IsWaiting)
                 continue;
             
-            SpawnClient(i);
+            if(Random.Range(0.0f, 100.0f) <= clientSpawnChance)
+                SpawnClient(i);
         }
     }
 
