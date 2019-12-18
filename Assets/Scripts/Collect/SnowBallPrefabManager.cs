@@ -12,12 +12,13 @@ public class SnowBallPrefabManager : MonoBehaviour
     [SerializeField] private AnimationCurve curve;
     private float timer = 0;
     private float startObjective;
-
+    float speed = 0;
+    float fallingSpeed = 0;
     private void Start()
     {
         tempestForce = GameManager.Instance.StatsManagerInstance.TempestForce;
-        float speed = startspeed * GameManager.Instance.StatsManagerInstance.Speed;
-        float fallingSpeed = startfallingSpeed * GameManager.Instance.StatsManagerInstance.FallingSpeed;
+        speed = startspeed * GameManager.Instance.StatsManagerInstance.Speed;
+        fallingSpeed = startfallingSpeed * GameManager.Instance.StatsManagerInstance.FallingSpeed;
         switch (tempestForce)
         {
             case 0:
@@ -44,14 +45,13 @@ public class SnowBallPrefabManager : MonoBehaviour
     {
         if (GameManager.Instance.InPause)
         {
+            snowBallRB.velocity = Vector2.zero;
             return;
         }
         if (snowBallRB.transform.position.y <= YDistanceDestroy)
         {
             Destroy(gameObject);                //To change when pooling system
         }
-        float speed = startspeed * GameManager.Instance.StatsManagerInstance.Speed;
-        float fallingSpeed = startfallingSpeed * GameManager.Instance.StatsManagerInstance.FallingSpeed;
         switch (tempestForce)
         {
             case 0:
