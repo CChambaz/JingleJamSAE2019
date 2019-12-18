@@ -36,6 +36,7 @@ public class MotherFuckingAudioManager : MonoBehaviour
         CLICK
     }
 
+
     MusicList currentMusicPlaying = MusicList.NONE;
     [Header("Emmiters")]
     [SerializeField] private int soundEmitterNumber;
@@ -85,6 +86,39 @@ public class MotherFuckingAudioManager : MonoBehaviour
         PlayMusic(MusicList.MAIN);
     }
 
+    public void PlayAlert(AlertList alert)
+    {
+        AudioSource emitterAvailable = null;
+
+        foreach (AudioSource emitter in emitters)
+        {
+            if (!emitter.isPlaying)
+            {
+                emitterAvailable = emitter;
+                break;
+            }
+        }
+
+        if (emitterAvailable != null)
+        {
+            emitterAvailable.loop = false;
+
+            switch (alert)
+            {
+                case AlertList.CLICK:
+                    emitterAvailable.clip = click;
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.alert;
+                    break;
+            }
+
+            emitterAvailable.Play();
+        }
+        else
+        {
+            Debug.Log("no emitter available");
+        }
+    }
+
     public void PlaySound(SoundList sound)
     {
         AudioSource emitterAvailable = null;
@@ -110,6 +144,30 @@ public class MotherFuckingAudioManager : MonoBehaviour
                     break;
                 case SoundList.REACTION_HAPPY:
                     emitterAvailable.clip = reactionHappy[Random.Range(0, reactionHappy.Length)];
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.SNOW:
+                    emitterAvailable.clip = snow;
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.ROCK:
+                    emitterAvailable.clip = rock;
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.BELL:
+                    emitterAvailable.clip = reactionSad[Random.Range(0, bells.Length)];
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.TORNADO:
+                    emitterAvailable.clip = tornado;
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.UPGRADE:
+                    emitterAvailable.clip = upgrade;
+                    emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
+                    break;
+                case SoundList.COINS:
+                    emitterAvailable.clip = coin;
                     emitterAvailable.outputAudioMixerGroup = AudioConfig.Instance.sound;
                     break;
             }

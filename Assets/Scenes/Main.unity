@@ -8904,5 +8904,10 @@ PrefabInstance:
       propertyPath: TxtAlert
       value: 
       objectReference: {fileID: 3517752543839819977}
+    - target: {fileID: 3747155626506187184, guid: 379e486df9492cd4c9864e8bb43dc0f3,
+        type: 3}
+      propertyPath: soundEmitterNumber
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 379e486df9492cd4c9864e8bb43dc0f3, type: 3}
