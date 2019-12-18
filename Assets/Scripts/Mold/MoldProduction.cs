@@ -13,6 +13,7 @@ public class MoldProduction : MonoBehaviour
     [SerializeField] private Image[] automationTimer;
     [SerializeField] private Button buttonProduction;
     [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private GameObject disabledGameObject;
     [SerializeField] private GameObject[] snowBallPrefab;
     [SerializeField] private GameObject[] particle;
     private MoldManager moldManager;
@@ -108,7 +109,7 @@ public class MoldProduction : MonoBehaviour
                     GameManager.Instance.SnowAmount -= moldManager.MoldsSO[i].SnowCost;
                     if (GameManager.Instance.Type == GameManager.GameState.IN_GAME_2)
                     {
-                        GameObject.Instantiate(snowBallPrefab[i], Camera.main.ScreenToWorldPoint(automationTimer[i].transform.position) + Vector3.forward * 10, Quaternion.identity);
+                        GameObject.Instantiate(snowBallPrefab[i], Camera.main.ScreenToWorldPoint(automationTimer[i].transform.position) + Vector3.forward * 10, Quaternion.identity, disabledGameObject.transform);
                     }
                 }
             }
@@ -139,7 +140,8 @@ public class MoldProduction : MonoBehaviour
             GameManager.Instance.SnowAmount -= moldManager.CurrentMoldSO.SnowCost;
             if (GameManager.Instance.Type == GameManager.GameState.IN_GAME_2)
             {
-                GameObject.Instantiate(snowBallPrefab[moldManager.SelectedMold], Vector3.zero, Quaternion.identity);
+                GameObject newObject = Instantiate(snowBallPrefab[moldManager.SelectedMold], Vector3.zero, Quaternion.identity, disabledGameObject.transform);
+                newObject.GetComponent<SnowProduction>().TargetPosition = new Vector2(3, -1.5f);
                 GameObject newParticle = Instantiate(particle[moldManager.SelectedMold], Vector3.zero, Quaternion.identity);
                 Destroy(newParticle, 2);
             }

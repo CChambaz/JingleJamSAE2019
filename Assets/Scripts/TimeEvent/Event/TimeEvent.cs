@@ -22,6 +22,12 @@ public class TimeEvent : ScriptableObject
     [SerializeField] protected string index;
     public string Index => index;
 
+    [SerializeField] private float fadeOut;
+    public float FadeOut => fadeOut;
+
+    [SerializeField] private AudioClip audioClip; 
+    public AudioClip AudioClip => audioClip;
+
     public string IndexReset{
         get => index;
         set => index = value;

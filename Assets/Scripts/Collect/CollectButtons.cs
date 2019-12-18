@@ -15,9 +15,19 @@ public class CollectButtons : MonoBehaviour
     [SerializeField] TextMeshProUGUI IncreaseContainerTMP;
     [SerializeField] TextMeshProUGUI IncreaseSlavesTMP;
 
+    private Animator animator;
+
     private void Start()
     {
         slavesManager = FindObjectOfType<Slaves>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void KillAllThisFuckingSlaves(float percent)
+    {
+        slavesManager.AmountSlaves = (int)(slavesManager.AmountSlaves * percent);
+        animator.SetTrigger("Tornado");
+        GameManager.Instance.CameraScript.BarrelRoll(); 
     }
 
     private void Update()

@@ -16,7 +16,8 @@ public class ClientManager : MonoBehaviour
     [SerializeField] private float clientEnableX;
 
     [SerializeField] public int[] snowballValues;
-    
+    private Animator animator;
+
     private Client[] clients;
     private List<Client> activeClients = new List<Client>();
     
@@ -37,6 +38,7 @@ public class ClientManager : MonoBehaviour
     void Start()
     {
         GameManager.Instance.ClientManager = this;
+        animator = GetComponent<Animator>();
         clients = new Client[maxClients];
 
         Vector3 nextPos = new Vector3(transform.position.x + clientDisableX, clientMaxY);
@@ -55,7 +57,7 @@ public class ClientManager : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.A))
             CheckStorage();
         
-        for (int i = 0; i < maxClients; i++)
+        for (int i = 0; i < maxClients * GameManager.Instance.StatsManagerInstance.ClientModifier; i++)
         {
             if(clients[i].IsWaiting)
                 continue;
@@ -125,5 +127,10 @@ public class ClientManager : MonoBehaviour
             
             hasEnoughSnowball = true;
         }
+    }
+    public void KillAllThisFuckingClient()
+    {
+        animator.SetTrigger("MassExtinction");
+        activeClients.Clear();
     }
 }

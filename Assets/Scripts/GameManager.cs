@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("View")]
     [SerializeField] private GameObject View_1;
     [SerializeField] private Canvas View_2;
+    [SerializeField] private GameObject View_2_Background;
     [SerializeField] private Canvas View_3;
     [SerializeField] private Canvas View_4;
     [Header("SnowAmount")]
@@ -66,6 +67,13 @@ public class GameManager : MonoBehaviour
         set => statsManagerInstance = value;
     }
 
+    private CameraScript cameraScript;
+    public CameraScript CameraScript
+    {
+        get => cameraScript;
+        set => cameraScript = value;
+    }
+
     private float snowAmount;
     public float SnowAmount
     {
@@ -111,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         statsManagerInstance = GetComponent<StatsManager>();
+        cameraScript = FindObjectOfType<CameraScript>();
         charge = FindObjectOfType<Charge>();
     }
     
@@ -130,6 +139,7 @@ public class GameManager : MonoBehaviour
                 View_2.GetComponent<CanvasGroup>().interactable = false;
                 View_2.GetComponent<CanvasGroup>().alpha = 0;
                 View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_2_Background.SetActive(false);
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -144,6 +154,7 @@ public class GameManager : MonoBehaviour
                 View_2.GetComponent<CanvasGroup>().interactable = true;
                 View_2.GetComponent<CanvasGroup>().alpha = 1;
                 View_2.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                View_2_Background.SetActive(true);
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -158,6 +169,7 @@ public class GameManager : MonoBehaviour
                 View_2.GetComponent<CanvasGroup>().interactable = false;
                 View_2.GetComponent<CanvasGroup>().alpha = 0;
                 View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_2_Background.SetActive(false);
                 View_3.GetComponent<CanvasGroup>().interactable = true;
                 View_3.GetComponent<CanvasGroup>().alpha = 1;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -171,6 +183,7 @@ public class GameManager : MonoBehaviour
                 View_2.GetComponent<CanvasGroup>().interactable = false;
                 View_2.GetComponent<CanvasGroup>().alpha = 0;
                 View_2.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                View_2_Background.SetActive(false);
                 View_3.GetComponent<CanvasGroup>().interactable = false;
                 View_3.GetComponent<CanvasGroup>().alpha = 0;
                 View_3.GetComponent<CanvasGroup>().blocksRaycasts = false;

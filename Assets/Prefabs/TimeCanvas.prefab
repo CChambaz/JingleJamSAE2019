@@ -118,15 +118,9 @@ MonoBehaviour:
   dayHours: 23
   weekDay: 6
   events:
-  - {fileID: 11400000, guid: 3712d35b718509e44a64cc8b2ed726e9, type: 2}
-  - {fileID: 11400000, guid: b551ed79259efef489b31592dd78812f, type: 2}
-  - {fileID: 11400000, guid: 3fc6661bd7d645249afdb669c1babd40, type: 2}
-  - {fileID: 11400000, guid: 86806bae7f8e91e488d6727be31221e0, type: 2}
-  - {fileID: 11400000, guid: 0b1dc2b2ebab4ca48a296a40dd136cfc, type: 2}
-  - {fileID: 11400000, guid: 64c8ea0052945b549ab076465402b365, type: 2}
-  - {fileID: 11400000, guid: 31b3aea85db6f4d4b8250c00a6d13b8d, type: 2}
   - {fileID: 11400000, guid: f6702f47f4178b34d9ef1ecb7eac26e3, type: 2}
-  - {fileID: 11400000, guid: 5417c94a8e2ec2b4d99fdf0191a50117, type: 2}
+  - {fileID: 11400000, guid: 86806bae7f8e91e488d6727be31221e0, type: 2}
+  - {fileID: 11400000, guid: 9e9174ca3f2eae645a4047986f6b2a1a, type: 2}
   season: 0
   eventPanel: {fileID: 0}
   eventName: {fileID: 0}

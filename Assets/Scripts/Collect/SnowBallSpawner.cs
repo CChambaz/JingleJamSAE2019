@@ -37,11 +37,11 @@ public class SnowBallSpawner : MonoBehaviour
         {
             if (randomPrefabNumber == 0)
             {
-                Instantiate(stonePrefab, new Vector3(Random.Range(spawnMinX, spawnMaxX), spawnY, 0), Quaternion.identity, gameObject.transform);
+                Instantiate(stonePrefab, new Vector3(Random.Range(spawnMinX * GameManager.Instance.StatsManagerInstance.SpawningSize, spawnMaxX * GameManager.Instance.StatsManagerInstance.SpawningSize), spawnY, 0), Quaternion.identity, gameObject.transform);
             }
             else
             {
-                Instantiate(snowBallPrefab, new Vector3(Random.Range(spawnMinX, spawnMaxX), spawnY, 0), Quaternion.identity, gameObject.transform);
+                Instantiate(snowBallPrefab, new Vector3(Random.Range(spawnMinX * GameManager.Instance.StatsManagerInstance.SpawningSize, spawnMaxX * GameManager.Instance.StatsManagerInstance.SpawningSize), spawnY, 0), Quaternion.identity, gameObject.transform);
             }
             currentRandom = Random.Range(-randomSpawnFloatTime * GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier, randomSpawnFloatTime * GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier);
             currentTime = 0;

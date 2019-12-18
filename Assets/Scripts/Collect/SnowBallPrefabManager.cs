@@ -5,8 +5,8 @@ using UnityEngine;
 public class SnowBallPrefabManager : MonoBehaviour
 {
     [SerializeField] Rigidbody2D snowBallRB;
-    [SerializeField] float fallingSpeed;
-    [SerializeField] float speed;
+    [SerializeField] float startfallingSpeed;
+    [SerializeField] float startspeed;
     [SerializeField] float YDistanceDestroy;
     int tempestForce;
     [SerializeField] private AnimationCurve curve;
@@ -16,23 +16,24 @@ public class SnowBallPrefabManager : MonoBehaviour
     private void Start()
     {
         tempestForce = GameManager.Instance.StatsManagerInstance.TempestForce;
-        fallingSpeed *= GameManager.Instance.StatsManagerInstance.FallingSpeed;
+        float speed = startspeed * GameManager.Instance.StatsManagerInstance.Speed;
+        float fallingSpeed = startfallingSpeed * GameManager.Instance.StatsManagerInstance.FallingSpeed;
         switch (tempestForce)
         {
             case 0:
             {
-                snowBallRB.velocity = Vector2.down * fallingSpeed;
+                snowBallRB.velocity = Vector2.down * fallingSpeed * speed;
                 break;
             }
             case 1:
             {
-                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed;
+                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed * speed;
                 break;
             }
             case 3:
             {
                 startObjective = (transform.position - transform.position * 2f).x;
-                snowBallRB.velocity = new Vector2(-Mathf.Sign(transform.position.x), -fallingSpeed);
+                snowBallRB.velocity = new Vector2(-Mathf.Sign(transform.position.x), -fallingSpeed) * speed;
                 break;
             }
         }
@@ -49,16 +50,18 @@ public class SnowBallPrefabManager : MonoBehaviour
         {
             Destroy(gameObject);                //To change when pooling system
         }
+        float speed = startspeed * GameManager.Instance.StatsManagerInstance.Speed;
+        float fallingSpeed = startfallingSpeed * GameManager.Instance.StatsManagerInstance.FallingSpeed;
         switch (tempestForce)
         {
             case 0:
                 {
-                    snowBallRB.velocity = Vector2.down * fallingSpeed;
+                    snowBallRB.velocity = Vector2.down * fallingSpeed * speed;
                     break;
                 }
             case 1:
             {
-                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed;
+                snowBallRB.velocity = GameManager.Instance.StatsManagerInstance.TempestDirection * fallingSpeed * speed;
                 break;
             }
             case 2:
