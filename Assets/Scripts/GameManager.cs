@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         
-        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
     }
 
 
@@ -229,6 +229,7 @@ public class GameManager : MonoBehaviour
             menu.GetComponent<CanvasGroup>().alpha = 0;
             menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
     }
 
 

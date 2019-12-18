@@ -36,6 +36,48 @@ public class MotherFuckingAudioManager : MonoBehaviour
         CLICK
     }
 
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Alpha0))
+    //    {
+    //        PlayAlert(AlertList.CLICK);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        PlaySound(SoundList.SNOW);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        PlaySound(SoundList.ROCK);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        PlaySound(SoundList.TORNADO);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha4))
+    //    {
+    //        PlaySound(SoundList.UPGRADE);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha5))
+    //    {
+    //        PlaySound(SoundList.REACTION_HAPPY);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha6))
+    //    {
+    //        PlaySound(SoundList.REACTION_SAD);
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.Alpha7))
+    //    {
+    //        PlaySound(SoundList.COINS);
+    //    }
+    //}
 
     MusicList currentMusicPlaying = MusicList.NONE;
     [Header("Emmiters")]
