@@ -49,3 +49,4 @@ MonoBehaviour:
   amountSnowBySlaves: 1
   currentTime: 0
   currentTimeWasSet: 0
+  collectManager: {fileID: 0}

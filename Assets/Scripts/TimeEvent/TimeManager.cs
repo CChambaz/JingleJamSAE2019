@@ -334,15 +334,18 @@ public class TimeManager : MonoBehaviour
             for (int i = 0; i < timeEvents.Length - 1; i++) timeEvents[i] = timeEvents[i + 1];
             if (lasteventtimer <= 0)
             {
-                if (currenTimeEvent.Name == "NuclearWar")
+                if (currenTimeEvent != null)
                 {
-                }
-                if (currenTimeEvent.Name == "Tornado")
-                {
-                    basketController.WelcomeBackBasket();
-                }
-                if (currenTimeEvent.Name == "MassExtinction")
-                {
+                    if (currenTimeEvent.Name == "NuclearWar")
+                    {
+                    }
+                    if (currenTimeEvent.Name == "Tornado")
+                    {
+                        basketController.WelcomeBackBasket();
+                    }
+                    if (currenTimeEvent.Name == "MassExtinction")
+                    {
+                    }
                 }
                 List<TimeEvent> possibleEvents = events.FindAll(s => s.Seasons[(int)season] && s.WeekDays[weekDay]);
                 float random = Random.value * possibleEvents.Count;
