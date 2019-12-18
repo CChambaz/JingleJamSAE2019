@@ -24,6 +24,13 @@ public class Slaves : MonoBehaviour
     [SerializeField] float currentTime = 0;
     [SerializeField] bool currentTimeWasSet = false;
 
+    [SerializeField] CollectManager collectManager;
+
+    private void Start()
+    {
+        collectManager = FindObjectOfType<CollectManager>();
+    }
+
     private void Update()
     {
         if (GameManager.Instance.InPause)
@@ -42,6 +49,10 @@ public class Slaves : MonoBehaviour
             {
                 GameManager.Instance.SnowAmount += amountSnowBySlaves;
                 currentTimeWasSet = false;
+                if (GameManager.Instance.SnowAmount >= collectManager.MaximumSnowConainer)
+                {
+                    GameManager.Instance.SnowAmount = collectManager.MaximumSnowConainer;
+                }
             }
         }
     }
