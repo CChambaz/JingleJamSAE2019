@@ -48,6 +48,7 @@ public class CollectButtons : MonoBehaviour
             collectManager.MaximumSnowBasket += increaseCapacityBasketNumber;
             GameManager.Instance.MoneyAmount -= (int)(basketCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
             basketCapacityPrice *= collectManager.PrinceMultiplicator;
+            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         }
     }
 
@@ -58,6 +59,7 @@ public class CollectButtons : MonoBehaviour
             collectManager.MaximumSnowConainer += increaseCapacityContainerNumber;
             GameManager.Instance.MoneyAmount -= (int)(containerCapacityPrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
             containerCapacityPrice *= collectManager.PrinceMultiplicator;
+            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         }
     }
 
@@ -68,6 +70,7 @@ public class CollectButtons : MonoBehaviour
             slavesManager.AmountSlaves += 1;
             slavesManager.SlavePrice += slavesManager.SlavePriceAtStart;
             GameManager.Instance.MoneyAmount -= (int)(slavesManager.SlavePrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
+            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         }
     }
 }
