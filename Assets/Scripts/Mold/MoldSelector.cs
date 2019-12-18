@@ -64,6 +64,8 @@ public class MoldSelector : MonoBehaviour {
         {
             return;
         }
+        arrowIndex *= -1;
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
         //moldSprites[moldManager.SelectedMold].SetActive(false);
         currentMoving[0] = moldManager.SelectedMold;
         currentDestination[0] = centerPosition.x + 550 * arrowIndex;
