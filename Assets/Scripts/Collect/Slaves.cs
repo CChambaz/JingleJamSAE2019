@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Slaves : MonoBehaviour
 {
-    [SerializeField] int slavePrice = 500;
+    [SerializeField] int slavePrice = 30;
     public int SlavePrice
     {
         get => slavePrice;
         set => slavePrice = value;
     }
+    int slavePriceAtStart;
+    public int SlavePriceAtStart
+    {
+        get => slavePriceAtStart;
+    }
+
 
     [SerializeField] int amountSlaves = 0;
     public int AmountSlaves
@@ -29,6 +35,7 @@ public class Slaves : MonoBehaviour
     private void Start()
     {
         collectManager = FindObjectOfType<CollectManager>();
+        slavePriceAtStart = slavePrice;
     }
 
     private void Update()

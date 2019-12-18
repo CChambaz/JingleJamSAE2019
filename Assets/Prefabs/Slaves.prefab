@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d667be73a305cad489c1b73c621d5b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slavePrice: 500
+  slavePrice: 30
   amountSlaves: 0
   farmTime: 5
   amountSnowBySlaves: 1
   currentTime: 0
   currentTimeWasSet: 0
+  collectManager: {fileID: 0}
