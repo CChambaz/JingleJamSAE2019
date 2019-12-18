@@ -52,8 +52,8 @@ public class ClientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.A))
-            CheckStorage();
+        if (GameManager.Instance.InPause)
+            return;
         
         for (int i = 0; i < maxClients; i++)
         {
