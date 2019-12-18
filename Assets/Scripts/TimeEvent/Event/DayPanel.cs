@@ -17,7 +17,7 @@ public class DayPanel : MonoBehaviour
         dayText.text = newdayText;
         weatherText.text = newweatherText;
         weatherImage.sprite = newweatherImage;
-        weatherTextPercent.text = newweatherTextPercent;
+        weatherTextPercent.text = newweatherTextPercent + "%";
         eventText.text = neweventText;
     }
 }
