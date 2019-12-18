@@ -122,10 +122,15 @@ public class BasketController : MonoBehaviour
                 {
                     collectManager.CurrentSnowBasket = collectManager.MaximumSnowBasket;
                 }
+                else
+                {
+                    MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.SNOW);
+                }
             }
 
             if (collision.tag == "Stone")
             {
+                MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.ROCK);
                 Destroy(collision.gameObject);
                 collectManager.CurrentSnowBasket = 0;
             }
