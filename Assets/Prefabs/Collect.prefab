@@ -1445,7 +1445,7 @@ MonoBehaviour:
   movementMinX: -2
   movementMaxX: 2
   collectManager: {fileID: 4296982614862073627}
-  downDragDistance: 2
+  downDragDistance: 1
   downDragTime: 0.5
   basketRB: {fileID: 4296982614420645555}
   moveBasketVelocity: 6

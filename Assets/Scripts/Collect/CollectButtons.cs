@@ -63,7 +63,7 @@ public class CollectButtons : MonoBehaviour
 
     public void IncreaseSlavesAmount()
     {
-        if (GameManager.Instance.MoneyAmount * GameManager.Instance.StatsManagerInstance.SalesMultiplier > slavesManager.SlavePrice)
+        if (GameManager.Instance.MoneyAmount > slavesManager.SlavePrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier)
         {
             slavesManager.AmountSlaves += 1;
             GameManager.Instance.MoneyAmount -= (int)(slavesManager.SlavePrice * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
