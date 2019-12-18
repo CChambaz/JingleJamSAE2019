@@ -151,8 +151,8 @@ public class TimeManager : MonoBehaviour
 
         if (Time.time > currentTime + timeForHours)
         {
-            eventPanel.SetActive(false);
             currentHours++;
+            eventPanel.SetActive(false);
             if (currentHours >= dayHours)
             {
                 currentDay++;
@@ -213,30 +213,35 @@ public class TimeManager : MonoBehaviour
                 {
                     case WeatherTypeSO.WeatherType.SUN:
                         GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 2;
+                        GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier = 1;
                         GameManager.Instance.StatsManagerInstance.Speed = 1;
                         GameManager.Instance.StatsManagerInstance.SpawningSize = 1;
                         GameManager.Instance.StatsManagerInstance.TempestForce = 0;
                         break;
                     case WeatherTypeSO.WeatherType.CLOUDY:
                         GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 1.5f;
+                        GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier = 1;
                         GameManager.Instance.StatsManagerInstance.Speed = 1;
                         GameManager.Instance.StatsManagerInstance.SpawningSize = 1;
                         GameManager.Instance.StatsManagerInstance.TempestForce = 0;
                         break;
                     case WeatherTypeSO.WeatherType.SNOW:
                         GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 1;
+                        GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier = 1;
                         GameManager.Instance.StatsManagerInstance.Speed = 1;
                         GameManager.Instance.StatsManagerInstance.SpawningSize = 1;
                         GameManager.Instance.StatsManagerInstance.TempestForce = 0;
                         break;
                     case WeatherTypeSO.WeatherType.MIST:
                         GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 1;
+                        GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier = 1;
                         GameManager.Instance.StatsManagerInstance.Speed = 1;
                         GameManager.Instance.StatsManagerInstance.SpawningSize = 1;
                         GameManager.Instance.StatsManagerInstance.TempestForce = 0;
                         break;
                     case WeatherTypeSO.WeatherType.STORM:
                         GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier = 0;
+                        GameManager.Instance.StatsManagerInstance.RandomSpawnFloatTimeMultiplier = 0;
                         GameManager.Instance.StatsManagerInstance.Speed = 2;
                         GameManager.Instance.StatsManagerInstance.SpawningSize = 8;
                         GameManager.Instance.StatsManagerInstance.TempestForce = 1;
@@ -289,7 +294,10 @@ public class TimeManager : MonoBehaviour
                                 break;
                             }
                     }
-
+                    if (i == 0)
+                    {
+                        weekDayText = "Today";
+                    }
                     if (timeEvents[i] != null)
                         dayObjects[i].GetComponent<DayPanel>().DisplayWeather(weekDayText,
                             weathers[i].weatherType.WeatherImage, weathers[i].weatherType.Name,
@@ -304,7 +312,7 @@ public class TimeManager : MonoBehaviour
                 {
                     currenTimeEvent.EndEvent();
                     if (currenTimeEvent.Index == "Big") events.Remove(currenTimeEvent);
-                    currenTimeEvent = null; if (currenTimeEvent.Name == "NuclearWar")
+                    if (currenTimeEvent.Name == "NuclearWar")
                     {
                     }
                     if (currenTimeEvent.Name == "Tornado")
@@ -314,6 +322,8 @@ public class TimeManager : MonoBehaviour
                     if (currenTimeEvent.Name == "MassExtinction")
                     {
                     }
+                    currenTimeEvent = null;
+                    
                 }
 
                 for (int i = 0; i < timeEvents.Length - 1; i++) timeEvents[i] = timeEvents[i + 1];
@@ -370,7 +380,7 @@ public class TimeManager : MonoBehaviour
                     }
 
                     eventPanel.SetActive(true);
-                    eventImage.sprite = currenTimeEvent.Sprite;
+                    //eventImage.sprite = currenTimeEvent.Sprite;
                     eventName.text = currenTimeEvent.Name;
                 }
             }
