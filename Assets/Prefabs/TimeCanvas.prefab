@@ -352,10 +352,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monthlyText: {fileID: 2598430919070415709}
   annualText: {fileID: 4965944308148507002}
-  taxesSlaveCost: 10
-  taxesInstallationCost: 5
-  taxesOnAnnualRevenu: 0.1
-  installationMaintenance: 2
+  taxesSlaveCost: 2
+  taxesInstallationCost: 1
+  taxesOnAnnualRevenu: 0.05
+  installationMaintenance: 1
 --- !u!1 &7838469995429340148
 GameObject:
   m_ObjectHideFlags: 0

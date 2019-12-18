@@ -12,6 +12,7 @@ public class TransitionManager : MonoBehaviour
 
     public void BtnPlay()
     {
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
         menu.gameObject.GetComponentsInChildren<RectTransform>()[1].rect.Set(0, 200, 0, 0);
         menu.GetComponentsInChildren<Button>()[0].GetComponent<CanvasGroup>().interactable = false;
         menu.GetComponentsInChildren<Button>()[0].GetComponent<CanvasGroup>().alpha = 0;
@@ -25,6 +26,7 @@ public class TransitionManager : MonoBehaviour
 
     public void BtnReturnMainMenu()
     {
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
         menu.gameObject.GetComponentsInChildren<RectTransform>()[1].rect.Set(0, 0, 0, 0);
         menu.GetComponentsInChildren<Button>()[1].GetComponent<CanvasGroup>().interactable = false;
         menu.GetComponentsInChildren<Button>()[1].GetComponent<CanvasGroup>().alpha = 0;
@@ -55,10 +57,6 @@ public class TransitionManager : MonoBehaviour
             menu.GetComponent<CanvasGroup>().alpha = 0;
             menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
-    }
-
-    private void Update()
-    {
-
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
     }
 }
