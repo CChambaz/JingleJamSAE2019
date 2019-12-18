@@ -44,6 +44,7 @@ public class MoldUpgrade : MonoBehaviour
 
     public void UpgradeAutomation()
     {
+        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.AutomationLevel++;
         GameManager.Instance.Charge.AutomationCount++;
@@ -51,12 +52,14 @@ public class MoldUpgrade : MonoBehaviour
 
     public void UpdradeSpeed()
     {
+        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.SpeedLevel++;
     }
 
     public void UpgradeStock()
     {
+        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.UPGRADE);
         GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.StockLevel++;
     }
