@@ -13,6 +13,8 @@ public class Client : MonoBehaviour
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text moneyText;
 
+    [SerializeField] private Sprite[] vosMagnifiquesGeules;
+    
     private bool isWaiting;
     public bool IsWaiting
     {
@@ -133,6 +135,8 @@ public class Client : MonoBehaviour
         }
 
         moneyText.text = moneyGiven.ToString();
+
+        clientImage.sprite = vosMagnifiquesGeules[Random.Range(0, vosMagnifiquesGeules.Length)];
     }
 
     public void AchieveOrder()

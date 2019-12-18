@@ -508,6 +508,9 @@ MonoBehaviour:
   clientImage: {fileID: 6758098512378411630}
   timerImage: {fileID: 6758098514175625080}
   moneyText: {fileID: 2495888223478933859}
+  vosMagnifiquesGeules:
+  - {fileID: -1179062675390662874, guid: 4bb56c7f3c043b9489de675a982bf2eb, type: 3}
+  - {fileID: 8108429906732120560, guid: bc2471648001a434c9e8c1dc75d95dd8, type: 3}
 --- !u!1 &6758098513030293703
 GameObject:
   m_ObjectHideFlags: 0
