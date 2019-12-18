@@ -43,20 +43,20 @@ public class Charge : MonoBehaviour
     void Update()
     {
         maintainCost = installationMaintenance * automationCount;
-        taxesCost = taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount;
+        taxesCost = taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount + (int)((float)annualRevenu * taxesOnAnnualRevenu);
 
-        monthlyText.text = "Monthly charges : " + taxesCost;
+        monthlyText.text = "Monthly charges : " + maintainCost;
         annualText.text = "Annual charges : " + taxesCost;
     }
 
     public void ApplyMaintenanceCost()
     {
-        GameManager.Instance.MoneyAmount -= installationMaintenance * automationCount;
+        GameManager.Instance.MoneyAmount -= maintainCost;
     }
 
     public void ApplyTaxes()
     {
-        GameManager.Instance.MoneyAmount -= taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount + (int)((float)annualRevenu * taxesOnAnnualRevenu);
+        GameManager.Instance.MoneyAmount -= taxesCost;
         annualRevenu = 0;
         
     }
