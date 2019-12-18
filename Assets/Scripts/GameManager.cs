@@ -205,6 +205,8 @@ public class GameManager : MonoBehaviour
         
         MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
     }
+
+
   
     public bool InPause
     {
@@ -228,4 +230,6 @@ public class GameManager : MonoBehaviour
             menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
+
+
 }
