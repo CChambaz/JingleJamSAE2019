@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,8 @@ public class BasketController : MonoBehaviour
     [SerializeField] Transform basketSpriteTransform;
     [SerializeField] Image basketContentPercentageImage;
 
+    private Animator animator;
+
     enum BasketEmptyingStatus
     {
         GO_DOWN,
@@ -37,6 +40,11 @@ public class BasketController : MonoBehaviour
     float waitTimeBasketDown;
 
     BasketEmptyingStatus basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -167,5 +175,17 @@ public class BasketController : MonoBehaviour
             canMoveBasket = true;
             basketEmptyingStatus = BasketEmptyingStatus.GO_DOWN;
         }
+    }
+
+    public void FuckYouBasket()
+    {
+        animator.SetBool("FuckYouBasket", true);
+        canMoveBasket = false;
+    }
+
+    public void WelcomeBackBasket()
+    {
+        animator.SetBool("FuckYouBasket", false);
+        canMoveBasket = true;
     }
 }

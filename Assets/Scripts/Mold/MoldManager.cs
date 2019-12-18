@@ -69,6 +69,7 @@ public class MoldManager : MonoBehaviour
     private MoldProduction moldProduction;
 
     private const int snowballTypeCount = 4;
+    private Animator animator;
 
     private int selectedMold = 0;
     public int SelectedMold
@@ -101,5 +102,16 @@ public class MoldManager : MonoBehaviour
     void Start()
     {
         moldProduction = FindObjectOfType<MoldProduction>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void KillAllThisFuckingAutomation(float percent)
+    {
+        animator.SetTrigger("NuclearWar");
+        GameManager.Instance.CameraScript.Shake();
+        foreach (MoldClass moldClass in moldClasses)
+        {
+            moldClass.AutomationLevel = (int)(moldClass.AutomationLevel * percent);
+        }
     }
 }

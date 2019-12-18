@@ -4,18 +4,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BigEvent : TimeEvent
 {
-    [SerializeField] private float moldAccelerations;
-    [SerializeField] private float promotions;
+    [SerializeField] private float clientLost;
     public override void StartEvent()
     {
-        index = "Big";
-        GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier = moldAccelerations;
-        GameManager.Instance.StatsManagerInstance.SalesMultiplier = promotions;
+        GameManager.Instance.StatsManagerInstance.ClientModifier = clientLost;
     }
 
     public override void EndEvent()
     {
-        GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier = 1;
-        GameManager.Instance.StatsManagerInstance.SalesMultiplier = 1;
+        GameManager.Instance.StatsManagerInstance.ClientModifier = 1;
     }
 }

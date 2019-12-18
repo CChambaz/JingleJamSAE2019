@@ -11,7 +11,7 @@ public class MoldSelector : MonoBehaviour {
 
     private Vector2 centerPosition;
 
-    float currentPressedTime;
+    float currentPressedTime = -1;
     float currentDragPosition;
     [SerializeField] float minDragTime;
     [SerializeField] float minDragDistance;
@@ -32,8 +32,9 @@ public class MoldSelector : MonoBehaviour {
     void Update()
     {
         AnimationMove();
-        if (GameManager.Instance.InPause)
+        if (GameManager.Instance.InPause || GameManager.Instance.Type != GameManager.GameState.IN_GAME_2)
         {
+            currentPressedTime = Time.time;
             return;
         }
         if (Input.GetMouseButtonDown(0))

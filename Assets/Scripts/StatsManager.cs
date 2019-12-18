@@ -48,6 +48,13 @@ public class StatsManager : MonoBehaviour
         set => tempestDirection = value;
     }
 
+    [SerializeField] private float speed;
+    public float Speed
+    {
+        get => speed;
+        set => speed = value;
+    }
+
     [SerializeField] private float fallingSpeed;
     public float FallingSpeed
     {
@@ -60,5 +67,12 @@ public class StatsManager : MonoBehaviour
     {
         get => spawningSize;
         set => spawningSize = value;
+    }
+
+    [SerializeField] private float clientModifier;
+    public float ClientModifier
+    {
+        get => clientModifier;
+        set => clientModifier = value;
     }
 }
