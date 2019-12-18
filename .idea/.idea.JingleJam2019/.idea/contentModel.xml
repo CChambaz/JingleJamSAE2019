@@ -23,7 +23,6 @@
             <e p="SnowBallSpawner.cs" t="Include" />
             <e p="StonePrefabManager.cs" t="Include" />
           </e>
-          <e p="Config.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="Mold" t="Include">
             <e p="MoldManager.cs" t="Include" />
@@ -36,6 +35,10 @@
             <e p="SnowProduction.cs" t="Include" />
           </e>
           <e p="ObjectDontDestroy.cs" t="Include" />
+          <e p="Sound" t="Include">
+            <e p="AudioConfig.cs" t="Include" />
+            <e p="motherFuckingAudioManager.cs" t="Include" />
+          </e>
           <e p="StatsManager.cs" t="Include" />
           <e p="TimeEvent" t="Include">
             <e p="Event" t="Include">

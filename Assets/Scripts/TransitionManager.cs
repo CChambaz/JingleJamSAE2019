@@ -36,7 +36,7 @@ public class TransitionManager : MonoBehaviour
 
         BtnPause();
         Destroy(menu.gameObject);
-        Destroy(GameObject.FindObjectOfType<Config>().gameObject);
+        Destroy(GameObject.FindObjectOfType<AudioConfig>().gameObject);
         SceneManager.LoadScene(0);
     }
 
