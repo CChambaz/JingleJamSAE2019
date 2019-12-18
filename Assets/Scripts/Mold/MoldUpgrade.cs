@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class MoldUpgrade : MonoBehaviour
 {
     private MoldManager moldManager;
-    private Charge charge;
     [SerializeField] private Button automationUpgradeButton;
     [SerializeField] private TextMeshProUGUI automationUpgradeText;
     [SerializeField] private Button speedUpgradeButton;
@@ -23,6 +22,10 @@ public class MoldUpgrade : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         if (moldManager.CurrentMoldClass.Unlocked)
         {
             automationUpgradeButton.interactable = moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier <= GameManager.Instance.MoneyAmount;
@@ -43,7 +46,7 @@ public class MoldUpgrade : MonoBehaviour
     {
         GameManager.Instance.MoneyAmount -= (int)(moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier);
         moldManager.CurrentMoldClass.AutomationLevel++;
-        charge.AutomationCount++;
+        GameManager.Instance.Charge.AutomationCount++;
     }
 
     public void UpdradeSpeed()

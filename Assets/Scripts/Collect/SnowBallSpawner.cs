@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SnowBallSpawner : MonoBehaviour
 {
@@ -18,13 +20,18 @@ public class SnowBallSpawner : MonoBehaviour
     [SerializeField] int randomPrefabNumber;
 
 
-    private void Start()
+    void Start()
     {
-        
+        spawnMaxX *= GameManager.Instance.StatsManagerInstance.SpawningSize;
+        spawnMinX *= GameManager.Instance.StatsManagerInstance.SpawningSize;
     }
 
     private void Update()
     {
+        if (GameManager.Instance.InPause)
+        {
+            return;
+        }
         currentTime += Time.deltaTime;
         if (currentTime + currentRandom >= spawnTime * GameManager.Instance.StatsManagerInstance.SpawnTimeMultiplier)
         {
@@ -41,6 +48,4 @@ public class SnowBallSpawner : MonoBehaviour
             randomPrefabNumber = Random.Range(0, amountOfSnowforOneStone + 1);
         }
     }
-
-
 }

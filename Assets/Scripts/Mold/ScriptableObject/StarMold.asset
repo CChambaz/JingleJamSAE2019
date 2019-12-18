@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimer: 2
   timerSpeed: 2
-  ballRate: 2
+  ballRate: 1
   snowCost: 2
   maxStock: 10
   automationSpeed: 0.3

@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Charge : MonoBehaviour
 {
-    [SerializeField] private TMP_Text taxeText;
-    [SerializeField] private TMP_Text maintainText;
+    [SerializeField] private Text monthlyText;
+    [SerializeField] private Text annualText;
     
     [SerializeField] private int taxesSlaveCost;
     [SerializeField] private int taxesInstallationCost;
@@ -30,6 +31,9 @@ public class Charge : MonoBehaviour
         set => annualRevenu = value;
     }
 
+    private int maintainCost = 0;
+    private int taxesCost = 0;
+    
     private void Start()
     {
         slaves = FindObjectOfType<Slaves>();
@@ -38,8 +42,11 @@ public class Charge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        maintainText.text = (installationMaintenance * automationCount).ToString();
-        taxeText.text = (taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount).ToString();
+        maintainCost = installationMaintenance * automationCount;
+        taxesCost = taxesSlaveCost * slaves.AmountSlaves + taxesInstallationCost * automationCount;
+
+        monthlyText.text = "Monthly charges : " + taxesCost;
+        annualText.text = "Annual charges : " + taxesCost;
     }
 
     public void ApplyMaintenanceCost()

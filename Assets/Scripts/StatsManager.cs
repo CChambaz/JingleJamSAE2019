@@ -33,4 +33,32 @@ public class StatsManager : MonoBehaviour
         get => moldTimeMultiplier;
         set => moldTimeMultiplier = value;
     }
+
+    [SerializeField] int tempestForce = 0;
+    public int TempestForce
+    {
+        get => tempestForce;
+        set => tempestForce = value;
+    }
+
+    [SerializeField] private Vector2 tempestDirection;
+    public Vector2 TempestDirection
+    {
+        get => tempestDirection;
+        set => tempestDirection = value;
+    }
+
+    [SerializeField] private float fallingSpeed;
+    public float FallingSpeed
+    {
+        get => fallingSpeed;
+        set => fallingSpeed = value;
+    }
+
+    [SerializeField] private float spawningSize;
+    public float SpawningSize
+    {
+        get => spawningSize;
+        set => spawningSize = value;
+    }
 }
