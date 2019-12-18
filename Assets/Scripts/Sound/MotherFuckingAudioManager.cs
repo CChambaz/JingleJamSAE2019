@@ -11,12 +11,6 @@ public class MotherFuckingAudioManager : MonoBehaviour
     
     List<AudioSource> emitters = new List<AudioSource>();
 
-    public enum SoundList
-    {
-        REACTION_HAPPY,
-        REACTION_SAD
-    }
-
     public enum MusicList
     {
         NONE,
@@ -25,23 +19,50 @@ public class MotherFuckingAudioManager : MonoBehaviour
         TORNADO
     }
 
+    public enum SoundList
+    {
+        REACTION_HAPPY,
+        REACTION_SAD,
+        SNOW,
+        ROCK,
+        BELL,
+        TORNADO,
+        UPGRADE,
+        COINS
+    }
+
+    public enum AlertList
+    {
+        CLICK
+    }
+
     MusicList currentMusicPlaying = MusicList.NONE;
-    
-    [Header("Sounds")]
-    [SerializeField] private AudioClip[] reactionHappy;
-    [SerializeField] private AudioClip[] reactionSad;
-
-    [Header("Musics")]
-    [SerializeField] private AudioClip mainMusic;
-    [SerializeField] private AudioClip nuckMusic;
-    [SerializeField] private AudioClip tornadoMusic;
-
     [Header("Emmiters")]
     [SerializeField] private int soundEmitterNumber;
     [SerializeField] private GameObject emitterPrefab;
     [SerializeField] private AudioSource[] musicEmitters;
 
-    [SerializeField] private AudioMixer MixerAudio;
+    [Header("Musics")]
+    [SerializeField] private AudioClip mainMusic;
+    [SerializeField] private AudioClip nuckMusic;
+    [SerializeField] private AudioClip tornadoMusic;
+    [Header("Sounds")]
+    [Header("   Reactions")]
+    [SerializeField] private AudioClip[] reactionHappy;
+    [SerializeField] private AudioClip[] reactionSad;
+    [Header("   Snow")]
+    [SerializeField] private AudioClip snow;
+    [Header("   Rock")]
+    [SerializeField] private AudioClip rock;
+    [Header("   Bells")]
+    [SerializeField] private AudioClip[] bells;
+    [Header("   Torndado")]
+    [SerializeField] private AudioClip tornado;
+    [Header("Alert")]
+    [SerializeField] private AudioClip click;
+    [Header("Upgrade")]
+    [SerializeField] private AudioClip upgrade;
+    [SerializeField] private AudioClip coin;
 
     private void Awake()
     {

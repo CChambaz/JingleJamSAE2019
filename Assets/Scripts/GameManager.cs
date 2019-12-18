@@ -206,13 +206,7 @@ public class GameManager : MonoBehaviour
         MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            
-        }
-    }
+
   
     public bool InPause
     {
