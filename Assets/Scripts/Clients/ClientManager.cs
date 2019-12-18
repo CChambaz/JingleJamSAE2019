@@ -54,15 +54,16 @@ public class ClientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.A))
-            CheckStorage();
+        if (GameManager.Instance.InPause)
+            return;
         
         for (int i = 0; i < maxClients * GameManager.Instance.StatsManagerInstance.ClientModifier; i++)
         {
             if(clients[i].IsWaiting)
                 continue;
             
-            SpawnClient(i);
+            if(Random.Range(0.0f, 100.0f) <= clientSpawnChance)
+                SpawnClient(i);
         }
     }
 

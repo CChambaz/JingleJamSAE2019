@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
     private Canvas menu;
 
     private Charge charge;
+    public Charge Charge
+    {
+        get => charge;
+        set => charge = value;
+    }
+
     private ClientManager clientManager;
     public ClientManager ClientManager
     {
@@ -117,7 +123,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if(Instance != this && Instance != null)
+            Destroy(gameObject);
+        else
+            Instance = this;
+        
         statsManagerInstance = GetComponent<StatsManager>();
         cameraScript = FindObjectOfType<CameraScript>();
         charge = FindObjectOfType<Charge>();
@@ -192,6 +202,8 @@ public class GameManager : MonoBehaviour
                 View_4.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 break;
         }
+        
+        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
     }
   
     public bool InPause
