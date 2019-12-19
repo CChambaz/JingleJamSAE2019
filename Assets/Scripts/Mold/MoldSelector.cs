@@ -76,7 +76,7 @@ public class MoldSelector : MonoBehaviour {
         currentMoving[1] = moldManager.SelectedMold;
         currentDestination[1] = centerPosition.x;
         currentOrientation[1] = arrowIndex;
-        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 550 * arrowIndex;
+        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 1000 * arrowIndex;
     }
 
     void AnimationMove()
@@ -105,7 +105,7 @@ public class MoldSelector : MonoBehaviour {
             }
             else
             {
-                moldSprites[i].transform.position = centerPosition + Vector2.right * 550;
+                moldSprites[i].transform.position = centerPosition + Vector2.right * 1000;
             }
         }
     }

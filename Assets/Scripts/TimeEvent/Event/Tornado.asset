@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   duration: 1
-  percentage: 1
+  percentage: 0.1
   seasons: 01010101
   weekDays: 01010101010101
   index: 
