@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: FrenchRevolution
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 7
-  percentage: 0.7
+  duration: 3
+  percentage: 0.25
   seasons: 00000100
   weekDays: 01010101010101
   index: Strike
+  fadeOut: 0
+  audioClip: {fileID: 0}
   name: French revolution
   moldAccelerations: 0.5
   promotions: 1.5

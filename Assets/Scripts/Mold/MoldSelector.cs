@@ -71,7 +71,7 @@ public class MoldSelector : MonoBehaviour {
         currentDestination[0] = centerPosition.x + 550 * arrowIndex;
         currentOrientation[0] = arrowIndex;
         moldSprites[moldManager.SelectedMold].transform.position = centerPosition;
-        moldManager.SelectedMold += arrowIndex;
+        moldManager.SelectedMold -= arrowIndex;
         //moldSprites[(int)moldManager.SelectedMold].SetActive(true);
         currentMoving[1] = moldManager.SelectedMold;
         currentDestination[1] = centerPosition.x;

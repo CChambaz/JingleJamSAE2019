@@ -19,6 +19,7 @@ public class BasketController : MonoBehaviour
     float currentDragYPosition;
 
     bool canMoveBasket = true;
+    bool animation = false;
 
     [SerializeField] float moveBasketVelocity;
     [SerializeField] float basketEmptyingPositionY;
@@ -52,6 +53,8 @@ public class BasketController : MonoBehaviour
         {
             return;
         }
+
+        animator.SetBool("FuckYouBasket", animation);
         //amountBasketTMP
         //amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
         amountBasketTMP.text = collectManager.CurrentSnowBasket.ToString();
@@ -184,13 +187,11 @@ public class BasketController : MonoBehaviour
 
     public void FuckYouBasket()
     {
-        animator.SetBool("FuckYouBasket", true);
-        canMoveBasket = false;
+        animation = true;
     }
 
     public void WelcomeBackBasket()
     {
-        animator.SetBool("FuckYouBasket", false);
-        canMoveBasket = true;
+        animation = false;
     }
 }

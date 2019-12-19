@@ -37,9 +37,9 @@ public class MoldUpgrade : MonoBehaviour
             speedUpgradeButton.interactable = false;
             stockUpgradeButton.interactable = false;
         }
-        automationUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.AutomationLevel + "\n Price : " + (moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
-        speedUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.SpeedLevel + "\n Price : " + (moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
-        stockUpgradeText.text = "Level : " + moldManager.CurrentMoldClass.StockLevel + "\n Price : " + (moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
+        automationUpgradeText.text = "Number : " + moldManager.CurrentMoldClass.AutomationLevel + "\n Price : " + (moldManager.CurrentMoldSO.AutomationCost * (moldManager.CurrentMoldClass.AutomationLevel+1) * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
+        speedUpgradeText.text = "Speed : " + moldManager.CurrentMoldSO.MaxTimer / (moldManager.CurrentMoldSO.TimerSpeed * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.MoldTimeMultiplier) + "\n Price : " + (moldManager.CurrentMoldSO.SpeedUpgradeCost * moldManager.CurrentMoldClass.SpeedLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
+        stockUpgradeText.text = "Stock : " + moldManager.CurrentMoldClass.StockLevel * moldManager.CurrentMoldSO.MaxStock + "\n Price : " + (moldManager.CurrentMoldSO.StockUpgradeCost * moldManager.CurrentMoldClass.StockLevel * GameManager.Instance.StatsManagerInstance.SalesMultiplier).ToString();
     }
 
     public void UpgradeAutomation()

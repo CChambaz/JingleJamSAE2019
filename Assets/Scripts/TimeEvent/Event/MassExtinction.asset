@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MassExtinction
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 7
-  percentage: 0.01
+  duration: 1
+  percentage: 0.05
   seasons: 01010101
   weekDays: 00000000000101
   index: Big
@@ -22,3 +22,4 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   name: MassExtinction
   clientLost: 0
+  moldmodifier: 1
