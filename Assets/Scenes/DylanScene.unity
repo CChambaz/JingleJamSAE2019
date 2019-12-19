@@ -1925,41 +1925,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6208983759134792132, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.85
-      objectReference: {fileID: 0}
     - target: {fileID: 7838469995178778155, guid: ebe69643cde459841af50fcc47151bc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2080,36 +2045,6 @@ PrefabInstance:
       propertyPath: eventName
       value: 
       objectReference: {fileID: 1002123083}
-    - target: {fileID: 7838469995178778159, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: eventImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7838469995178778159, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: timeForHours
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7838469995178778159, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: dayHours
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7838469995429340149, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.8248519
-      objectReference: {fileID: 0}
-    - target: {fileID: 7838469995429340149, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7838469995429340149, guid: ebe69643cde459841af50fcc47151bc6,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.000049591064
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe69643cde459841af50fcc47151bc6, type: 3}
 --- !u!223 &1028722119 stripped
@@ -2118,48 +2053,6 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 1028722118}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1028722120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5264907278918694070, guid: ebe69643cde459841af50fcc47151bc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1028722118}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1028722121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028722120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6741637, b: 0.5801887, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1028722122
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028722120}
-  m_CullTransparentMesh: 0
 --- !u!1 &1030344496
 GameObject:
   m_ObjectHideFlags: 0
