@@ -344,11 +344,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a8df1b8ff11094b975e2d9ab89b5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForHours: 5
+  timeForHours: 2
   dayHours: 5
   weekDay: 6
   events:
   - {fileID: 11400000, guid: 3712d35b718509e44a64cc8b2ed726e9, type: 2}
+  - {fileID: 11400000, guid: 5417c94a8e2ec2b4d99fdf0191a50117, type: 2}
   - {fileID: 11400000, guid: b551ed79259efef489b31592dd78812f, type: 2}
   - {fileID: 11400000, guid: 3fc6661bd7d645249afdb669c1babd40, type: 2}
   - {fileID: 11400000, guid: 86806bae7f8e91e488d6727be31221e0, type: 2}
@@ -357,7 +358,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 64c8ea0052945b549ab076465402b365, type: 2}
   - {fileID: 11400000, guid: 31b3aea85db6f4d4b8250c00a6d13b8d, type: 2}
   - {fileID: 11400000, guid: 9e9174ca3f2eae645a4047986f6b2a1a, type: 2}
-  - {fileID: 11400000, guid: 5417c94a8e2ec2b4d99fdf0191a50117, type: 2}
   season: 0
   eventPanel: {fileID: 0}
   eventName: {fileID: 0}
@@ -460,13 +460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b9698ef9744eaf44980e7960cbb1d8e5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

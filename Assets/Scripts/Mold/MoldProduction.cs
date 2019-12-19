@@ -142,7 +142,7 @@ public class MoldProduction : MonoBehaviour
             {
                 GameObject newObject = Instantiate(snowBallPrefab[moldManager.SelectedMold], Vector3.zero, Quaternion.identity, disabledGameObject.transform);
                 newObject.GetComponent<SnowProduction>().TargetPosition = new Vector2(3, -1.5f);
-                GameObject newParticle = Instantiate(particle[moldManager.SelectedMold], Vector3.zero, Quaternion.identity);
+                GameObject newParticle = Instantiate(particle[moldManager.SelectedMold], Vector3.up*2, Quaternion.identity);
                 Destroy(newParticle, 2);
             }
         } else if (!moldManager.CurrentMoldClass.Unlocked && GameManager.Instance.MoneyAmount >= moldManager.CurrentMoldSO.UnlockedCost * GameManager.Instance.StatsManagerInstance.SalesMultiplier)

@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: AutumnSales
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 1
+  duration: 2
   percentage: 0.5
   seasons: 00000001
   weekDays: 01010101010101
   index: Sales
+  fadeOut: 0
+  audioClip: {fileID: 0}
   name: Autumn sales
   promotions: 0.5

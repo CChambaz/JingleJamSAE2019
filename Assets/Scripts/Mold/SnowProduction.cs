@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class SnowProduction : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float verticalSpeed;
+    [SerializeField] private float horizontalSpeed;
     [SerializeField] private Vector2 targetPosition;
+    private float currentTime = 0;
+    private bool verical = true;
+    private Vector2 startPositon;
+
+    void Start()
+    {
+        startPositon = transform.position;
+    }
+
     public Vector2 TargetPosition
     {
         get => targetPosition;
@@ -14,15 +24,28 @@ public class SnowProduction : MonoBehaviour
     }
     void Update()
     {
-        if (Mathf.Abs(transform.position.y - targetPosition.y) > 0.1)
+        if (verical)
         {
-            transform.position -= Vector3.up * speed * Mathf.Sign(transform.position.y - targetPosition.y) * Time.deltaTime * 10;
-        } else
-        { 
-            if (Mathf.Abs(transform.position.x - targetPosition.x) > 0.1)
+            currentTime += Time.deltaTime * verticalSpeed;
+            if (currentTime < 1)
             {
-                transform.position -= Vector3.right * speed * Mathf.Sign(transform.position.x - targetPosition.x) * Time.deltaTime;
-            } else
+                transform.position = Vector3.Lerp(startPositon, new Vector3(transform.position.x, targetPosition.y), currentTime);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, targetPosition.y);
+                verical = false;
+                currentTime = 0;
+                startPositon = transform.position;
+            }
+        } else
+        {
+            currentTime += Time.deltaTime * horizontalSpeed;
+            if (currentTime < 1)
+            {
+                transform.position = Vector3.Lerp(startPositon, targetPosition, currentTime);
+            }
+            else
             {
                 Destroy(gameObject);
             }

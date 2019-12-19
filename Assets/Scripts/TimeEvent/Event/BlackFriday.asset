@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: BlackFriday
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 3
-  percentage: 0.7
+  duration: 1
+  percentage: 0.1
   seasons: 01010101
   weekDays: 00000000010101
   index: Sales
+  fadeOut: 0
+  audioClip: {fileID: 0}
   name: Black friday
-  promotions: 0.1
+  promotions: 0.25

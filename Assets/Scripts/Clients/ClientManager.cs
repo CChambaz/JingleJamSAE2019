@@ -139,6 +139,10 @@ public class ClientManager : MonoBehaviour
     public void KillAllThisFuckingClient()
     {
         animator.SetTrigger("MassExtinction");
-        activeClients.Clear();
+
+        for (int i = 0; i < maxClients; i++)
+        {
+            DespawnClient(i, false);
+        }
     }
 }
