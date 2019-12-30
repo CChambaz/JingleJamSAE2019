@@ -18,7 +18,7 @@ MonoBehaviour:
   snowCost: 2
   maxStock: 10
   automationSpeed: 0.3
-  automationCost: 20
+  automationCost: 30
   speedUpgradeCost: 20
   stockUpgradeCost: 20
-  unlockedCost: 20
+  unlockedCost: 10

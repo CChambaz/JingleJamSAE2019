@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NuclearWar
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  duration: 7
-  percentage: 0.01
+  duration: 1
+  percentage: 0.05
   seasons: 01010101
   weekDays: 01010101010101
   index: Big
@@ -22,3 +22,4 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   name: NuclearWar
   clientLost: 1
+  moldmodifier: 0

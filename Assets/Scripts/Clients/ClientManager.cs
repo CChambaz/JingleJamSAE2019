@@ -15,6 +15,8 @@ public class ClientManager : MonoBehaviour
     [SerializeField] private float clientDisableX;
     [SerializeField] private float clientEnableX;
 
+    [SerializeField] private Transform panelTransform;
+
     [SerializeField] public int[] snowballValues;
     private Animator animator;
 
@@ -45,7 +47,7 @@ public class ClientManager : MonoBehaviour
         
         for (int i = 0; i < maxClients; i++)
         {
-            clients[i] = Instantiate(clientPrefab, nextPos, Quaternion.identity, transform).GetComponent<Client>();
+            clients[i] = Instantiate(clientPrefab, nextPos, Quaternion.identity, panelTransform).GetComponent<Client>();
             clients[i].Index = i;
             nextPos.y -= clientHalfSize.y;
         }
@@ -137,6 +139,10 @@ public class ClientManager : MonoBehaviour
     public void KillAllThisFuckingClient()
     {
         animator.SetTrigger("MassExtinction");
-        activeClients.Clear();
+
+        for (int i = 0; i < maxClients; i++)
+        {
+            DespawnClient(i, false);
+        }
     }
 }

@@ -64,17 +64,19 @@ public class MoldSelector : MonoBehaviour {
         {
             return;
         }
+        arrowIndex *= -1;
+        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
         //moldSprites[moldManager.SelectedMold].SetActive(false);
         currentMoving[0] = moldManager.SelectedMold;
         currentDestination[0] = centerPosition.x + 550 * arrowIndex;
         currentOrientation[0] = arrowIndex;
         moldSprites[moldManager.SelectedMold].transform.position = centerPosition;
-        moldManager.SelectedMold += arrowIndex;
+        moldManager.SelectedMold -= arrowIndex;
         //moldSprites[(int)moldManager.SelectedMold].SetActive(true);
         currentMoving[1] = moldManager.SelectedMold;
         currentDestination[1] = centerPosition.x;
         currentOrientation[1] = arrowIndex;
-        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 550 * arrowIndex;
+        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 1000 * arrowIndex;
     }
 
     void AnimationMove()
@@ -103,7 +105,7 @@ public class MoldSelector : MonoBehaviour {
             }
             else
             {
-                moldSprites[i].transform.position = centerPosition + Vector2.right * 550;
+                moldSprites[i].transform.position = centerPosition + Vector2.right * 1000;
             }
         }
     }
