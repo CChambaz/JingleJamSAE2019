@@ -55,9 +55,22 @@ public class BasketController : MonoBehaviour
         }
 
         animator.SetBool("FuckYouBasket", animation);
+
+
         //amountBasketTMP
         //amountBasketTMP.rectTransform.position = Camera.main.WorldToScreenPoint(basketSpriteTransform.position);
         amountBasketTMP.text = collectManager.CurrentSnowBasket.ToString();
+        //Add Color text
+        if (collectManager.CurrentSnowBasket != collectManager.MaximumSnowBasket)
+        {
+            amountBasketTMP.color = Color.white;
+            amountBasketTMP.fontStyle = FontStyles.Normal;
+        }
+        else
+        {
+            amountBasketTMP.color = Color.green;
+            amountBasketTMP.fontStyle = FontStyles.Bold;
+        }
         basketContentPercentageImage.fillAmount = (float)collectManager.CurrentSnowBasket / (float)collectManager.MaximumSnowBasket;
         if (canMoveBasket)
         {
