@@ -65,10 +65,14 @@ public class MoldSelector : MonoBehaviour {
             return;
         }
         arrowIndex *= -1;
-        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
+        if (MotherFuckingAudioManager.Instance)
+        {
+            MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
+        }
+
         //moldSprites[moldManager.SelectedMold].SetActive(false);
         currentMoving[0] = moldManager.SelectedMold;
-        currentDestination[0] = centerPosition.x + 550 * arrowIndex;
+        currentDestination[0] = centerPosition.x + 5 * arrowIndex;
         currentOrientation[0] = arrowIndex;
         moldSprites[moldManager.SelectedMold].transform.position = centerPosition;
         moldManager.SelectedMold -= arrowIndex;
@@ -76,7 +80,7 @@ public class MoldSelector : MonoBehaviour {
         currentMoving[1] = moldManager.SelectedMold;
         currentDestination[1] = centerPosition.x;
         currentOrientation[1] = arrowIndex;
-        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 1000 * arrowIndex;
+        moldSprites[moldManager.SelectedMold].transform.position = centerPosition - Vector2.right * 4 * arrowIndex;
     }
 
     void AnimationMove()
@@ -94,7 +98,7 @@ public class MoldSelector : MonoBehaviour {
             }
             if (index != -1)
             {
-                if (Mathf.Abs(moldSprites[i].transform.position.x - currentDestination[index]) > 50)
+                if (Mathf.Abs(moldSprites[i].transform.position.x - currentDestination[index]) > 0.2f)
                 {
                     moldSprites[i].transform.position += Vector3.right * currentOrientation[index] * Time.deltaTime * animationSpeed;
                 }
@@ -105,7 +109,7 @@ public class MoldSelector : MonoBehaviour {
             }
             else
             {
-                moldSprites[i].transform.position = centerPosition + Vector2.right * 1000;
+                moldSprites[i].transform.position = centerPosition + Vector2.right * 4;
             }
         }
     }

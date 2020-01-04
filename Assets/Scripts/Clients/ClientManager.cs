@@ -100,14 +100,19 @@ public class ClientManager : MonoBehaviour
         if (satisifed)
         {
             clientSatisfiedCount++;
-            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.COINS);
-            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
+            if (MotherFuckingAudioManager.Instance)
+            {
+                MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.COINS);
+                MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_HAPPY);
+            }
+
             for(int i = 0; i < clients.Length; i++)
                 clients[i].UpdateMaxItemIndex();
         }
         else
         {
-            MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_SAD);
+            if (MotherFuckingAudioManager.Instance)
+                MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.REACTION_SAD);
         }
     }
     

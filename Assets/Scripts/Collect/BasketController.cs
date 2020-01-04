@@ -140,13 +140,15 @@ public class BasketController : MonoBehaviour
                 }
                 else
                 {
-                    MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.SNOW);
+                    if(MotherFuckingAudioManager.Instance)
+                        MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.SNOW);
                 }
             }
 
             if (collision.tag == "Stone")
             {
-                MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.ROCK);
+                if (MotherFuckingAudioManager.Instance)
+                    MotherFuckingAudioManager.Instance.PlaySound(MotherFuckingAudioManager.SoundList.ROCK);
                 Destroy(collision.gameObject);
                 collectManager.CurrentSnowBasket = 0;
             }

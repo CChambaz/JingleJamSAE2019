@@ -136,7 +136,8 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         SetTypeGame((int)type);
-        menu = GameObject.Find("CanvasMenu").GetComponent<Canvas>();
+        if(GameObject.Find("CanvasMenu")!= null)
+            menu = GameObject.Find("CanvasMenu").GetComponent<Canvas>();
     }
     
     public void SetTypeGame(int state)
@@ -202,8 +203,8 @@ public class GameManager : MonoBehaviour
                 View_4.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 break;
         }
-        
-        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
+        if(MotherFuckingAudioManager.Instance)
+            MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
     }
 
 
@@ -217,19 +218,23 @@ public class GameManager : MonoBehaviour
     public void BtnPause()
     {
         inPause = !inPause;
-        if (inPause)
+        if (menu != null)
         {
-            menu.GetComponent<CanvasGroup>().interactable = true;
-            menu.GetComponent<CanvasGroup>().alpha = 1;
-            menu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            if (inPause)
+            {
+                menu.GetComponent<CanvasGroup>().interactable = true;
+                menu.GetComponent<CanvasGroup>().alpha = 1;
+                menu.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+            else
+            {
+                menu.GetComponent<CanvasGroup>().interactable = false;
+                menu.GetComponent<CanvasGroup>().alpha = 0;
+                menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+
+            MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
         }
-        else
-        {
-            menu.GetComponent<CanvasGroup>().interactable = false;
-            menu.GetComponent<CanvasGroup>().alpha = 0;
-            menu.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        }
-        MotherFuckingAudioManager.Instance.PlayAlert(MotherFuckingAudioManager.AlertList.CLICK);
     }
 
 
